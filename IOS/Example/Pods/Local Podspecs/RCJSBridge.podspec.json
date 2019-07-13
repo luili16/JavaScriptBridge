@@ -1,0 +1,27 @@
+{
+  "name": "RCJSBridge",
+  "version": "2.0.7",
+  "summary": "A javascript bridge for DreamBridge",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://gitlab.rouchi.com/liulixin/rcjsbridge",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "liulixin@rouchi.com": "liulixin@rouchi.com"
+  },
+  "source": {
+    "git": "https://gitlab.rouchi.com/liulixin/rcjsbridge.git",
+    "tag": "2.0.7"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "RCJSBridge/Classes/**/*",
+  "resource_bundles": {
+    "RCJSBridge": [
+      "RCJSBridge/Assets/*.js"
+    ]
+  }
+}

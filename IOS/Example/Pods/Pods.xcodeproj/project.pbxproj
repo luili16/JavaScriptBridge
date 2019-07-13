@@ -1,0 +1,925 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0200B936569798C4D05389663968491D /* RCInvokedUrlCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = A78707CA2AF0FFA757D2CFACEE325143 /* RCInvokedUrlCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		023EF0EB6B0CF1E059F634B4DF8CEB70 /* RCJSON_private.m in Sources */ = {isa = PBXBuildFile; fileRef = CA11AFD14902C733D3312407C9AB652D /* RCJSON_private.m */; };
+		149E5FFA0C7B02CEC17C2C19F65D7C95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		1709C8712F21102E737EA3A14B688B2F /* Pods-RCJSBridge_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 028FB3EE8B8A333367977E3192511D2C /* Pods-RCJSBridge_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17DC3E7CFA3EEF7FFA4056F9BDB50738 /* RCPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = BD19169F7B37B42E41D6536DD5323599 /* RCPlugin.m */; };
+		1C74C1AFD994E9A7AA1A400CA7E21534 /* Pods-RCJSBridge_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 69DF6E76047000EB4755ACCE9E99E369 /* Pods-RCJSBridge_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20FA722B94E4228B29DAF462CD8E594E /* RCActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C4F31BAE0C742C6F942536DFCC5C1E /* RCActionHandler.m */; };
+		21D64BACFA17E310747AE9213D04EF49 /* RCJSON_private.h in Headers */ = {isa = PBXBuildFile; fileRef = DC93DDBB208F037ADB3864E5DAB72308 /* RCJSON_private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29FB7EA5DE442BF04AB33A44867400D7 /* RCJSBridge-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F8349B42C7A51DF7AA3FFCE78F64031C /* RCJSBridge-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		660F5A5F58333208E283ABB2B0EBBCA3 /* RCInvokedUrlCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 752F39A86FD9E471B59ED52AF9A5B79C /* RCInvokedUrlCommand.m */; };
+		8EAC7135D4406BF211DE655F95D6EEE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		9646A2B377F45E762167F2FAA0D8533D /* RCActionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 64C81D1AB5C556D59DDDD8140980DC87 /* RCActionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A311800A1CA9C3B07515B297A3D63856 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		C006E3DBD835DE2BE4BB01D1DCBFD3A4 /* RCWebViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = C27F071227F39896BD9940DB6F5782CD /* RCWebViewBridge.m */; };
+		C0BE953C213318F55A36414485FF6363 /* RCJSBridge-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DD220DA1B5AAA2CC5A71D7F84C4F46 /* RCJSBridge-dummy.m */; };
+		C582C075FE1C63390B1085DA55942E32 /* RCCommandDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF1155288899D52B5A6D5E72731DF03 /* RCCommandDelegate.m */; };
+		C85EC1D706691D1A330A88FA876EB265 /* rc_js_bridge_backup.js in Resources */ = {isa = PBXBuildFile; fileRef = 386530C1066B1D0BD89A48ED332ECDDF /* rc_js_bridge_backup.js */; };
+		CC2A740D8015FB809500EB457D55A44E /* RCCommandDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 78C7065320E67BC45FFB4CDCBD776329 /* RCCommandDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D07230189529263158B8DC74878A7C94 /* rc_js_bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 83ED552C45DB0FA10DC52209B9E26E21 /* rc_js_bridge.js */; };
+		D1C678928187FBC96FC1495074B7F326 /* RCPluginResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A1319A44638839D1B55C4DB5B3BADE73 /* RCPluginResult.m */; };
+		D208C04E37D9D983E6BF50CE5C6939B0 /* RCPluginResult.h in Headers */ = {isa = PBXBuildFile; fileRef = FDC0112ACA6208D64FCF42D280C224A0 /* RCPluginResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D600D3A8F9F798CA4E9FFF6F5F36501C /* Pods-RCJSBridge_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 138FF2B6854A988D27C6B1B999965B41 /* Pods-RCJSBridge_Tests-dummy.m */; };
+		D707A7295E01DF6712EEE1961B3FD936 /* RCWebViewBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = DCDC0C21759B07D79006C2A226829DAB /* RCWebViewBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E3B19D002C2ECFE6CFC3F4425151357D /* Pods-RCJSBridge_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FB1F18DCF0B11C95DB9AF09DA1C05D /* Pods-RCJSBridge_Example-dummy.m */; };
+		F729D8FD2E862A7664E756788FA823AA /* RCPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C0C11DAE35D3A1CBD578D5EE6ED3F88 /* RCPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FECBC8FF2118C15AB01BB9DAE6EB7AD5 /* RCJSBridge.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 488565E571D7F67360D66A473A278C4E /* RCJSBridge.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0C3A3033F08CC5B8FD8C0754AF20CB5F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47364811169DE68668A89E47BBADA2C3;
+			remoteInfo = "RCJSBridge-RCJSBridge";
+		};
+		777FBC7214E6E6BCEEABC8FBF023DF10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9E3DBA5EC4BE5B380FBDC177B94B029;
+			remoteInfo = "Pods-RCJSBridge_Example";
+		};
+		D03D2E22FFA59EE1803A10683948BE33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CADCCDDF26DC6C69A6C060B6E4FE59A;
+			remoteInfo = RCJSBridge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		028FB3EE8B8A333367977E3192511D2C /* Pods-RCJSBridge_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RCJSBridge_Tests-umbrella.h"; sourceTree = "<group>"; };
+		04C4F31BAE0C742C6F942536DFCC5C1E /* RCActionHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCActionHandler.m; path = RCJSBridge/Classes/RCActionHandler.m; sourceTree = "<group>"; };
+		04DDB8EC329F5DFBDF86153352782037 /* Pods-RCJSBridge_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RCJSBridge_Example.modulemap"; sourceTree = "<group>"; };
+		06F2CF57210D14FF94D42A6704709F88 /* Pods-RCJSBridge_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RCJSBridge_Example.release.xcconfig"; sourceTree = "<group>"; };
+		0F8FE8FAE8631ED98A3FCD264A7C8FB5 /* Pods-RCJSBridge_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RCJSBridge_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		138FF2B6854A988D27C6B1B999965B41 /* Pods-RCJSBridge_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RCJSBridge_Tests-dummy.m"; sourceTree = "<group>"; };
+		13EF6C7A8392769BFBE6B174C07B339D /* Pods-RCJSBridge_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RCJSBridge_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		1850DC6171476F24FD4946A1805BC4F3 /* Pods-RCJSBridge_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RCJSBridge_Tests.modulemap"; sourceTree = "<group>"; };
+		187E7FE31637193B9CF578D5A99AA92A /* RCJSBridge.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RCJSBridge.modulemap; sourceTree = "<group>"; };
+		1DC5D1012FC7311D9A10521CFA28AA24 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		219C8BA7BDAE9D0DA9BCA7F6DEE169AE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		220F58DE41ACC19F67DD4E985419FDD1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		227D103C4F8E2A72EAD979BF540B7FF3 /* Pods_RCJSBridge_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCJSBridge_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		301262F59CF0BACFC1419D17A84AA4C0 /* Pods_RCJSBridge_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCJSBridge_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3121384AEC51624759CDB395EF9AF742 /* RCJSBridge.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RCJSBridge.xcconfig; sourceTree = "<group>"; };
+		35DD220DA1B5AAA2CC5A71D7F84C4F46 /* RCJSBridge-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RCJSBridge-dummy.m"; sourceTree = "<group>"; };
+		37FB1F18DCF0B11C95DB9AF09DA1C05D /* Pods-RCJSBridge_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RCJSBridge_Example-dummy.m"; sourceTree = "<group>"; };
+		386530C1066B1D0BD89A48ED332ECDDF /* rc_js_bridge_backup.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = rc_js_bridge_backup.js; path = RCJSBridge/Assets/rc_js_bridge_backup.js; sourceTree = "<group>"; };
+		3CF1155288899D52B5A6D5E72731DF03 /* RCCommandDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCCommandDelegate.m; path = RCJSBridge/Classes/RCCommandDelegate.m; sourceTree = "<group>"; };
+		4480425082FABB32CCE56F2BA78FFB7C /* Pods-RCJSBridge_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RCJSBridge_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		488565E571D7F67360D66A473A278C4E /* RCJSBridge.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RCJSBridge.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E97961A9C06FB126B7B92532978241D /* Pods-RCJSBridge_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RCJSBridge_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4EB007122F246B10E9765B6AD1B10D13 /* RCJSBridge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RCJSBridge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6038AB450E70A7696E9C0862E01F2B59 /* RCJSBridge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = RCJSBridge.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		629D9E068F78742E6B208C7B754396BF /* Pods-RCJSBridge_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RCJSBridge_Example-frameworks.sh"; sourceTree = "<group>"; };
+		64C81D1AB5C556D59DDDD8140980DC87 /* RCActionHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCActionHandler.h; path = RCJSBridge/Classes/RCActionHandler.h; sourceTree = "<group>"; };
+		68A0A3B8D742B1053B01F6CE215DD1D7 /* Pods-RCJSBridge_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RCJSBridge_Tests-resources.sh"; sourceTree = "<group>"; };
+		69DF6E76047000EB4755ACCE9E99E369 /* Pods-RCJSBridge_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RCJSBridge_Example-umbrella.h"; sourceTree = "<group>"; };
+		6C0C11DAE35D3A1CBD578D5EE6ED3F88 /* RCPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCPlugin.h; path = RCJSBridge/Classes/RCPlugin.h; sourceTree = "<group>"; };
+		74D16C7F8D1BB31B5B7A3E2F7F967891 /* Pods-RCJSBridge_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RCJSBridge_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		752F39A86FD9E471B59ED52AF9A5B79C /* RCInvokedUrlCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCInvokedUrlCommand.m; path = RCJSBridge/Classes/RCInvokedUrlCommand.m; sourceTree = "<group>"; };
+		78C7065320E67BC45FFB4CDCBD776329 /* RCCommandDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCCommandDelegate.h; path = RCJSBridge/Classes/RCCommandDelegate.h; sourceTree = "<group>"; };
+		83ED552C45DB0FA10DC52209B9E26E21 /* rc_js_bridge.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = rc_js_bridge.js; path = RCJSBridge/Assets/rc_js_bridge.js; sourceTree = "<group>"; };
+		9088F4CE265E57822E48208F4339FCEF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		95555F32785385E9AF6585B1BB73A94C /* RCJSBridge-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RCJSBridge-prefix.pch"; sourceTree = "<group>"; };
+		982ED9AC56DA824A8C78F02A6A9205C8 /* Pods-RCJSBridge_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RCJSBridge_Example-resources.sh"; sourceTree = "<group>"; };
+		A1319A44638839D1B55C4DB5B3BADE73 /* RCPluginResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCPluginResult.m; path = RCJSBridge/Classes/RCPluginResult.m; sourceTree = "<group>"; };
+		A78707CA2AF0FFA757D2CFACEE325143 /* RCInvokedUrlCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCInvokedUrlCommand.h; path = RCJSBridge/Classes/RCInvokedUrlCommand.h; sourceTree = "<group>"; };
+		AC8E6F5537C221950C3169A3A6976596 /* Pods-RCJSBridge_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RCJSBridge_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		B4B4A1C9DD6BA320242F77CB1373C04B /* Pods-RCJSBridge_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RCJSBridge_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		BD19169F7B37B42E41D6536DD5323599 /* RCPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCPlugin.m; path = RCJSBridge/Classes/RCPlugin.m; sourceTree = "<group>"; };
+		BF396814A218B3FA2A4AAC15BC1044F8 /* Pods-RCJSBridge_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RCJSBridge_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C27F071227F39896BD9940DB6F5782CD /* RCWebViewBridge.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCWebViewBridge.m; path = RCJSBridge/Classes/RCWebViewBridge.m; sourceTree = "<group>"; };
+		CA11AFD14902C733D3312407C9AB652D /* RCJSON_private.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCJSON_private.m; path = RCJSBridge/Classes/RCJSON_private.m; sourceTree = "<group>"; };
+		D4E67943F35B1570560B005607BCAEAB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DC93DDBB208F037ADB3864E5DAB72308 /* RCJSON_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCJSON_private.h; path = RCJSBridge/Classes/RCJSON_private.h; sourceTree = "<group>"; };
+		DCDC0C21759B07D79006C2A226829DAB /* RCWebViewBridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCWebViewBridge.h; path = RCJSBridge/Classes/RCWebViewBridge.h; sourceTree = "<group>"; };
+		EF04A5DCD2FC91276CB906C487B6C620 /* ResourceBundle-RCJSBridge-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-RCJSBridge-Info.plist"; sourceTree = "<group>"; };
+		F8349B42C7A51DF7AA3FFCE78F64031C /* RCJSBridge-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RCJSBridge-umbrella.h"; sourceTree = "<group>"; };
+		FDC0112ACA6208D64FCF42D280C224A0 /* RCPluginResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCPluginResult.h; path = RCJSBridge/Classes/RCPluginResult.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0DD2C2E00F23FBB85895A6672B935BC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EAC7135D4406BF211DE655F95D6EEE4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4900D90F641C983A8B43196504D5A80D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6CA5BE04CD81018C3F964EA5146255B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				149E5FFA0C7B02CEC17C2C19F65D7C95 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFEE8D854BD3518C93FFBC656B54A4CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A311800A1CA9C3B07515B297A3D63856 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		145FF2A08FAA677062DBA723151B1AE0 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				1DC5D1012FC7311D9A10521CFA28AA24 /* LICENSE */,
+				6038AB450E70A7696E9C0862E01F2B59 /* RCJSBridge.podspec */,
+				D4E67943F35B1570560B005607BCAEAB /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		78AA0528E017BBFE0983B991EC1A5C41 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B23533337246E20B9670DF170DE6DF9 /* RCJSBridge */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		7B23533337246E20B9670DF170DE6DF9 /* RCJSBridge */ = {
+			isa = PBXGroup;
+			children = (
+				64C81D1AB5C556D59DDDD8140980DC87 /* RCActionHandler.h */,
+				04C4F31BAE0C742C6F942536DFCC5C1E /* RCActionHandler.m */,
+				78C7065320E67BC45FFB4CDCBD776329 /* RCCommandDelegate.h */,
+				3CF1155288899D52B5A6D5E72731DF03 /* RCCommandDelegate.m */,
+				A78707CA2AF0FFA757D2CFACEE325143 /* RCInvokedUrlCommand.h */,
+				752F39A86FD9E471B59ED52AF9A5B79C /* RCInvokedUrlCommand.m */,
+				DC93DDBB208F037ADB3864E5DAB72308 /* RCJSON_private.h */,
+				CA11AFD14902C733D3312407C9AB652D /* RCJSON_private.m */,
+				6C0C11DAE35D3A1CBD578D5EE6ED3F88 /* RCPlugin.h */,
+				BD19169F7B37B42E41D6536DD5323599 /* RCPlugin.m */,
+				FDC0112ACA6208D64FCF42D280C224A0 /* RCPluginResult.h */,
+				A1319A44638839D1B55C4DB5B3BADE73 /* RCPluginResult.m */,
+				DCDC0C21759B07D79006C2A226829DAB /* RCWebViewBridge.h */,
+				C27F071227F39896BD9940DB6F5782CD /* RCWebViewBridge.m */,
+				145FF2A08FAA677062DBA723151B1AE0 /* Pod */,
+				A5C3230768DB3AF2DB8A29D93DC83623 /* Resources */,
+				FCC83A83526FCE9D21143760EDDC2850 /* Support Files */,
+			);
+			name = RCJSBridge;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				78AA0528E017BBFE0983B991EC1A5C41 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				D60184884C4C472D472C212032705B98 /* Products */,
+				A3AE0ABAD4DBD68CFF3197BC93485342 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		9E8D6CEF2C7CAC6F9573B09809D1028F /* Pods-RCJSBridge_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				219C8BA7BDAE9D0DA9BCA7F6DEE169AE /* Info.plist */,
+				1850DC6171476F24FD4946A1805BC4F3 /* Pods-RCJSBridge_Tests.modulemap */,
+				BF396814A218B3FA2A4AAC15BC1044F8 /* Pods-RCJSBridge_Tests-acknowledgements.markdown */,
+				74D16C7F8D1BB31B5B7A3E2F7F967891 /* Pods-RCJSBridge_Tests-acknowledgements.plist */,
+				138FF2B6854A988D27C6B1B999965B41 /* Pods-RCJSBridge_Tests-dummy.m */,
+				4480425082FABB32CCE56F2BA78FFB7C /* Pods-RCJSBridge_Tests-frameworks.sh */,
+				68A0A3B8D742B1053B01F6CE215DD1D7 /* Pods-RCJSBridge_Tests-resources.sh */,
+				028FB3EE8B8A333367977E3192511D2C /* Pods-RCJSBridge_Tests-umbrella.h */,
+				AC8E6F5537C221950C3169A3A6976596 /* Pods-RCJSBridge_Tests.debug.xcconfig */,
+				13EF6C7A8392769BFBE6B174C07B339D /* Pods-RCJSBridge_Tests.release.xcconfig */,
+			);
+			name = "Pods-RCJSBridge_Tests";
+			path = "Target Support Files/Pods-RCJSBridge_Tests";
+			sourceTree = "<group>";
+		};
+		A3AE0ABAD4DBD68CFF3197BC93485342 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1FFC5AA1A9C4FA43765A5EBA8D27F9B /* Pods-RCJSBridge_Example */,
+				9E8D6CEF2C7CAC6F9573B09809D1028F /* Pods-RCJSBridge_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		A5C3230768DB3AF2DB8A29D93DC83623 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				83ED552C45DB0FA10DC52209B9E26E21 /* rc_js_bridge.js */,
+				386530C1066B1D0BD89A48ED332ECDDF /* rc_js_bridge_backup.js */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E0D919E635D23B70123790B8308F8EF /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D60184884C4C472D472C212032705B98 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				301262F59CF0BACFC1419D17A84AA4C0 /* Pods_RCJSBridge_Example.framework */,
+				227D103C4F8E2A72EAD979BF540B7FF3 /* Pods_RCJSBridge_Tests.framework */,
+				488565E571D7F67360D66A473A278C4E /* RCJSBridge.bundle */,
+				4EB007122F246B10E9765B6AD1B10D13 /* RCJSBridge.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1FFC5AA1A9C4FA43765A5EBA8D27F9B /* Pods-RCJSBridge_Example */ = {
+			isa = PBXGroup;
+			children = (
+				220F58DE41ACC19F67DD4E985419FDD1 /* Info.plist */,
+				04DDB8EC329F5DFBDF86153352782037 /* Pods-RCJSBridge_Example.modulemap */,
+				4E97961A9C06FB126B7B92532978241D /* Pods-RCJSBridge_Example-acknowledgements.markdown */,
+				B4B4A1C9DD6BA320242F77CB1373C04B /* Pods-RCJSBridge_Example-acknowledgements.plist */,
+				37FB1F18DCF0B11C95DB9AF09DA1C05D /* Pods-RCJSBridge_Example-dummy.m */,
+				629D9E068F78742E6B208C7B754396BF /* Pods-RCJSBridge_Example-frameworks.sh */,
+				982ED9AC56DA824A8C78F02A6A9205C8 /* Pods-RCJSBridge_Example-resources.sh */,
+				69DF6E76047000EB4755ACCE9E99E369 /* Pods-RCJSBridge_Example-umbrella.h */,
+				0F8FE8FAE8631ED98A3FCD264A7C8FB5 /* Pods-RCJSBridge_Example.debug.xcconfig */,
+				06F2CF57210D14FF94D42A6704709F88 /* Pods-RCJSBridge_Example.release.xcconfig */,
+			);
+			name = "Pods-RCJSBridge_Example";
+			path = "Target Support Files/Pods-RCJSBridge_Example";
+			sourceTree = "<group>";
+		};
+		FCC83A83526FCE9D21143760EDDC2850 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9088F4CE265E57822E48208F4339FCEF /* Info.plist */,
+				187E7FE31637193B9CF578D5A99AA92A /* RCJSBridge.modulemap */,
+				3121384AEC51624759CDB395EF9AF742 /* RCJSBridge.xcconfig */,
+				35DD220DA1B5AAA2CC5A71D7F84C4F46 /* RCJSBridge-dummy.m */,
+				95555F32785385E9AF6585B1BB73A94C /* RCJSBridge-prefix.pch */,
+				F8349B42C7A51DF7AA3FFCE78F64031C /* RCJSBridge-umbrella.h */,
+				EF04A5DCD2FC91276CB906C487B6C620 /* ResourceBundle-RCJSBridge-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/RCJSBridge";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1ED97850FFCBBE3C88CAC7D51205756D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9646A2B377F45E762167F2FAA0D8533D /* RCActionHandler.h in Headers */,
+				CC2A740D8015FB809500EB457D55A44E /* RCCommandDelegate.h in Headers */,
+				0200B936569798C4D05389663968491D /* RCInvokedUrlCommand.h in Headers */,
+				29FB7EA5DE442BF04AB33A44867400D7 /* RCJSBridge-umbrella.h in Headers */,
+				21D64BACFA17E310747AE9213D04EF49 /* RCJSON_private.h in Headers */,
+				F729D8FD2E862A7664E756788FA823AA /* RCPlugin.h in Headers */,
+				D208C04E37D9D983E6BF50CE5C6939B0 /* RCPluginResult.h in Headers */,
+				D707A7295E01DF6712EEE1961B3FD936 /* RCWebViewBridge.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		285AEC38F5C1D5518F2EF8800E328BA3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1709C8712F21102E737EA3A14B688B2F /* Pods-RCJSBridge_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FB8DBA0273E190271BC54A39CC91647 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C74C1AFD994E9A7AA1A400CA7E21534 /* Pods-RCJSBridge_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		47364811169DE68668A89E47BBADA2C3 /* RCJSBridge-RCJSBridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E6A3F40C798F3074421EB9EEAA2330D /* Build configuration list for PBXNativeTarget "RCJSBridge-RCJSBridge" */;
+			buildPhases = (
+				90065311CEFDD12251972E727154728D /* Sources */,
+				4900D90F641C983A8B43196504D5A80D /* Frameworks */,
+				93DDC6EF70F0395BD8320F5297D15C44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RCJSBridge-RCJSBridge";
+			productName = "RCJSBridge-RCJSBridge";
+			productReference = 488565E571D7F67360D66A473A278C4E /* RCJSBridge.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		8A14848496B900512B60C5C366ADCB9F /* Pods-RCJSBridge_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6CADD6C350E40D2AB5DE23EE57D7C0F /* Build configuration list for PBXNativeTarget "Pods-RCJSBridge_Tests" */;
+			buildPhases = (
+				B8BFFDA82C6CEE7917BA24F91A310B0D /* Sources */,
+				E6CA5BE04CD81018C3F964EA5146255B /* Frameworks */,
+				285AEC38F5C1D5518F2EF8800E328BA3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8847E4E2778A0DB840759AE389B0FA3 /* PBXTargetDependency */,
+			);
+			name = "Pods-RCJSBridge_Tests";
+			productName = "Pods-RCJSBridge_Tests";
+			productReference = 227D103C4F8E2A72EAD979BF540B7FF3 /* Pods_RCJSBridge_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8CADCCDDF26DC6C69A6C060B6E4FE59A /* RCJSBridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8B351877B0FF5270383A699A5FC2C9A /* Build configuration list for PBXNativeTarget "RCJSBridge" */;
+			buildPhases = (
+				647C1CF18DEC60F4D8314236D5C83326 /* Sources */,
+				FFEE8D854BD3518C93FFBC656B54A4CD /* Frameworks */,
+				94BE07F815EDECFF4C87B333AD231E37 /* Resources */,
+				1ED97850FFCBBE3C88CAC7D51205756D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCEDD15CF4C561586EFFB3201CF797D1 /* PBXTargetDependency */,
+			);
+			name = RCJSBridge;
+			productName = RCJSBridge;
+			productReference = 4EB007122F246B10E9765B6AD1B10D13 /* RCJSBridge.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A9E3DBA5EC4BE5B380FBDC177B94B029 /* Pods-RCJSBridge_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 028ED3A33C4F0B3E59E92FB23511E195 /* Build configuration list for PBXNativeTarget "Pods-RCJSBridge_Example" */;
+			buildPhases = (
+				27BB78CF8DA8586E91BA9BA60193BBE1 /* Sources */,
+				0DD2C2E00F23FBB85895A6672B935BC2 /* Frameworks */,
+				7FB8DBA0273E190271BC54A39CC91647 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A377600510DEB62BD5C79D35D355F50 /* PBXTargetDependency */,
+			);
+			name = "Pods-RCJSBridge_Example";
+			productName = "Pods-RCJSBridge_Example";
+			productReference = 301262F59CF0BACFC1419D17A84AA4C0 /* Pods_RCJSBridge_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 1020;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = D60184884C4C472D472C212032705B98 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9E3DBA5EC4BE5B380FBDC177B94B029 /* Pods-RCJSBridge_Example */,
+				8A14848496B900512B60C5C366ADCB9F /* Pods-RCJSBridge_Tests */,
+				8CADCCDDF26DC6C69A6C060B6E4FE59A /* RCJSBridge */,
+				47364811169DE68668A89E47BBADA2C3 /* RCJSBridge-RCJSBridge */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		93DDC6EF70F0395BD8320F5297D15C44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07230189529263158B8DC74878A7C94 /* rc_js_bridge.js in Resources */,
+				C85EC1D706691D1A330A88FA876EB265 /* rc_js_bridge_backup.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94BE07F815EDECFF4C87B333AD231E37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FECBC8FF2118C15AB01BB9DAE6EB7AD5 /* RCJSBridge.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27BB78CF8DA8586E91BA9BA60193BBE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3B19D002C2ECFE6CFC3F4425151357D /* Pods-RCJSBridge_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		647C1CF18DEC60F4D8314236D5C83326 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FA722B94E4228B29DAF462CD8E594E /* RCActionHandler.m in Sources */,
+				C582C075FE1C63390B1085DA55942E32 /* RCCommandDelegate.m in Sources */,
+				660F5A5F58333208E283ABB2B0EBBCA3 /* RCInvokedUrlCommand.m in Sources */,
+				C0BE953C213318F55A36414485FF6363 /* RCJSBridge-dummy.m in Sources */,
+				023EF0EB6B0CF1E059F634B4DF8CEB70 /* RCJSON_private.m in Sources */,
+				17DC3E7CFA3EEF7FFA4056F9BDB50738 /* RCPlugin.m in Sources */,
+				D1C678928187FBC96FC1495074B7F326 /* RCPluginResult.m in Sources */,
+				C006E3DBD835DE2BE4BB01D1DCBFD3A4 /* RCWebViewBridge.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90065311CEFDD12251972E727154728D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8BFFDA82C6CEE7917BA24F91A310B0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D600D3A8F9F798CA4E9FFF6F5F36501C /* Pods-RCJSBridge_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A377600510DEB62BD5C79D35D355F50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RCJSBridge;
+			target = 8CADCCDDF26DC6C69A6C060B6E4FE59A /* RCJSBridge */;
+			targetProxy = D03D2E22FFA59EE1803A10683948BE33 /* PBXContainerItemProxy */;
+		};
+		D8847E4E2778A0DB840759AE389B0FA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-RCJSBridge_Example";
+			target = A9E3DBA5EC4BE5B380FBDC177B94B029 /* Pods-RCJSBridge_Example */;
+			targetProxy = 777FBC7214E6E6BCEEABC8FBF023DF10 /* PBXContainerItemProxy */;
+		};
+		FCEDD15CF4C561586EFFB3201CF797D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "RCJSBridge-RCJSBridge";
+			target = 47364811169DE68668A89E47BBADA2C3 /* RCJSBridge-RCJSBridge */;
+			targetProxy = 0C3A3033F08CC5B8FD8C0754AF20CB5F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		061BEB995C27F970B30F0FDFB76A5A45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3121384AEC51624759CDB395EF9AF742 /* RCJSBridge.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/RCJSBridge";
+				INFOPLIST_FILE = "Target Support Files/RCJSBridge/ResourceBundle-RCJSBridge-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = RCJSBridge;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		199D972A13F2B4C56847F7A89CCA83BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		521921679E6E01C0AFD9E8A15F2CD102 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3121384AEC51624759CDB395EF9AF742 /* RCJSBridge.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/RCJSBridge";
+				INFOPLIST_FILE = "Target Support Files/RCJSBridge/ResourceBundle-RCJSBridge-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = RCJSBridge;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		61A2D00D38AA9CA09E3BC39E955028A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3121384AEC51624759CDB395EF9AF742 /* RCJSBridge.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RCJSBridge/RCJSBridge-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RCJSBridge/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RCJSBridge/RCJSBridge.modulemap";
+				PRODUCT_MODULE_NAME = RCJSBridge;
+				PRODUCT_NAME = RCJSBridge;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		860050202B7D6D6304B81D20E86724D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06F2CF57210D14FF94D42A6704709F88 /* Pods-RCJSBridge_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RCJSBridge_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RCJSBridge_Example/Pods-RCJSBridge_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		99053B7DBB7FF110878B5C6086F40500 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13EF6C7A8392769BFBE6B174C07B339D /* Pods-RCJSBridge_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RCJSBridge_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RCJSBridge_Tests/Pods-RCJSBridge_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BDA0A7B193C1F55D3A48E00370821FFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC8E6F5537C221950C3169A3A6976596 /* Pods-RCJSBridge_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RCJSBridge_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RCJSBridge_Tests/Pods-RCJSBridge_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D2EEECF9F95B46F2A75A59E966DE72A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3121384AEC51624759CDB395EF9AF742 /* RCJSBridge.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RCJSBridge/RCJSBridge-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RCJSBridge/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RCJSBridge/RCJSBridge.modulemap";
+				PRODUCT_MODULE_NAME = RCJSBridge;
+				PRODUCT_NAME = RCJSBridge;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FA66C00F907DEF07EEA86D8B706673DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F8FE8FAE8631ED98A3FCD264A7C8FB5 /* Pods-RCJSBridge_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RCJSBridge_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RCJSBridge_Example/Pods-RCJSBridge_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FDB2FC4A1E5891381CD9D922145497F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		028ED3A33C4F0B3E59E92FB23511E195 /* Build configuration list for PBXNativeTarget "Pods-RCJSBridge_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA66C00F907DEF07EEA86D8B706673DB /* Debug */,
+				860050202B7D6D6304B81D20E86724D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				199D972A13F2B4C56847F7A89CCA83BC /* Debug */,
+				FDB2FC4A1E5891381CD9D922145497F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E6A3F40C798F3074421EB9EEAA2330D /* Build configuration list for PBXNativeTarget "RCJSBridge-RCJSBridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				061BEB995C27F970B30F0FDFB76A5A45 /* Debug */,
+				521921679E6E01C0AFD9E8A15F2CD102 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6CADD6C350E40D2AB5DE23EE57D7C0F /* Build configuration list for PBXNativeTarget "Pods-RCJSBridge_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDA0A7B193C1F55D3A48E00370821FFA /* Debug */,
+				99053B7DBB7FF110878B5C6086F40500 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8B351877B0FF5270383A699A5FC2C9A /* Build configuration list for PBXNativeTarget "RCJSBridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2EEECF9F95B46F2A75A59E966DE72A7 /* Debug */,
+				61A2D00D38AA9CA09E3BC39E955028A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

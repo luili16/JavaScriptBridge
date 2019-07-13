@@ -1,0 +1,7 @@
+[
+    {
+        "service":{
+            "className-ios":"EchoPlugin"
+        }
+    }
+]

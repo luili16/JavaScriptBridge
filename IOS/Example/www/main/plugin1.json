@@ -1,0 +1,32 @@
+[
+    {
+        "service":{
+            "className-ios":"InputPlugin"
+        }
+    },
+    {
+        "service":{
+            "className-ios":"TestPlugin1"
+        }
+    },
+    {
+        "service":{
+            "className-ios":"TestPlugin2"
+        }
+    },
+    {
+        "service":{
+            "className-ios":"TestPlugin3"
+        }
+    },
+    {
+        "service":{
+            "className-ios":"TestPlugin4"
+        }
+    },
+    {
+        "service":{
+            "className-ios":"TestPlugin5"
+        }
+    }
+]

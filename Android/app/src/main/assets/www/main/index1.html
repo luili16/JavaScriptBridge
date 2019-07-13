@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="viewport" content="width=width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0" />
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="application/javascript">
+
+			function passNumberToNative() {
+				console.log("platform:"+window.RCPlatform);
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"TestPlugin","passNumberToNative",[123,3.1415926,Number.MAX_SAFE_INTEGER,Number.MIN_SAFE_INTEGER]);
+			}
+
+			function passStringToNative() {
+				console.log("platform:"+window.RCPlatform);
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"TestPlugin","passStringToNative",["hello world!"]);
+			}
+
+			function passArrayToNative() {
+				console.log("platform:"+window.RCPlatform);
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"TestPlugin","passArrayToNative",[["hello world",123,3.1345555]]);
+			}
+
+			function passObjectToNative() {
+
+				var obj = {
+					"user":"lixin",
+					"info":"this is a description",
+					"account":1234,
+					"map":{
+						"map0":"map0",
+						"map1":"map1"
+					},
+					"array":[
+						"abc",
+						"def",
+						456
+					]
+				};
+
+				console.log("platform:"+window.RCPlatform);
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"TestPlugin","passObjectToNative",[obj]);
+			}
+		</script>
+	</head>
+	<body>
+		<div>hello htlm5</div>
+		<button onclick="passNumberToNative()">passNumberToNative1</button>
+		<button onclick="passStringToNative()">passStringToNative1</button>
+		<button onclick="passArrayToNative()">passArrayToNative1</button>
+		<button onclick="passObjectToNative()">passObjectToNative1</button>
+	</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="viewport" content="width=width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0" />
+	<head>
+		<script type="application/javascript" src="rc_js_bridge.js"></script>
+		<script type="application/javascript">
+			function messageAsString() {
+
+				// RCJSBridge.exec(function(response) {
+				// 	console.log("messageAsString 回调成功");
+				// 	var span = document.getElementById('messageAsString');
+				// 	var status = response.status;
+				// 	if (status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+				// 		console.log("执行失败!!");
+				// 		span.innerText = '执行失败, status = ' + status;
+				// 		return;
+				// 	}
+				// 	var data = response.data;
+				// 	console.log(`status = ${status}`);
+				// 	console.log(`data = ${data}`);
+				// 	console.log(`data type is ${typeof data}`);
+				// 	span.innerText = data + '->type is ' + (typeof data);
+				// }, 'EchoPlugin', 'echoString', ['messageAsString']);
+
+				JsObject.paramsString("hello world");
+
+			}
+			
+			function messageAsInteger() {
+				// RCJSBridge.exec(function(response) {
+				// 	console.log('messageAsInteger 回调成功');
+				// 	var span = document.getElementById('messageAsInteger');
+				// 	var status = response.status;
+				// 	if (status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+				// 		console.log("执行失败!!");
+				// 		span.innerText = '执行失败, status = ' + status;
+				// 		return;
+				// 	}
+					
+				// 	var data = response.data;
+				// 	span.innerText = data + '->type is ' + (typeof data);
+				// },'EchoPlugin','echoInteger',[123]);
+
+				JsObject.paramsInteger(1234);
+			}
+			
+			function messageAsMaxInteger() {
+				// RCJSBridge.exec(function(response) {
+				// 	console.log('messageAsMaxInteger 回调成功');
+				// 	var span = document.getElementById('messageAsMaxInteger');
+				// 	var status = response.status;
+				// 	if (status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+				// 		console.log("执行失败!!");
+				// 		span.innerText = '执行失败, status = ' + status;
+				// 		return;
+				// 	}
+					
+				// 	var data = response.data;
+				// 	span.innerText = data + '->type is ' + (typeof data);
+				// },'EchoPlugin','echoMaxInteger',[123]);
+
+				
+			}
+			
+			function messageAsMinInteger() {
+				// RCJSBridge.exec(function(response){
+				// 	console.log('messageAsMinInteger 回调成功');
+				// 	var span = document.getElementById('messageAsMinInteger');
+				// 	var status = response.status;
+				// 	if (status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+				// 		console.log("执行失败!!");
+				// 		span.innerText = '执行失败, status = ' + status;
+				// 		return;
+				// 	}
+					
+				// 	var data = response.data;
+				// 	span.innerText = data + '->type is ' + (typeof data);
+				// },'EchoPlugin','echoMinInteger',[123]);
+			}
+			
+			function printInfo(f,response) {
+				console.log(f + '回调成功');
+				var span = document.getElementById(f);
+				var status = response.status;
+				if (status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+					console.log("执行失败!!");
+					span.innerText = '执行失败, status = ' + status;
+					return;
+				}
+				
+				var data = response.data;
+				span.innerText = data + '->type is ' + (typeof data);
+			}
+			
+			function messageAsInt() {
+				// RCJSBridge.exec(function(response) {
+				// 	printInfo('messageAsInt',response);
+				// },'EchoPlugin','echoInt',[123]);
+			}
+			
+			function messageAsMaxInt() {
+				// RCJSBridge.exec(function(response) {
+				// 	printInfo('messageAsMaxInt',response);
+				// },'EchoPlugin','echoMaxInt',[123]);
+			}
+			
+			function messageAsMinInt() {
+				// RCJSBridge.exec(function(response) {
+				// 	printInfo('messageAsMinInt',response);
+				// },'EchoPlugin','echoMinInt',[123]);
+			}
+			
+			function messageAsUInteger() {
+				// RCJSBridge.exec(function(response) {
+				// 	printInfo('messageAsUInteger',response);
+				// },'EchoPlugin','echoUInteger',[123]);
+			}
+			
+			function messageAsMaxUInteger() {
+				// RCJSBridge.exec(function(response) {
+				// 	printInfo('messageAsMaxUInteger',response);
+				// },'EchoPlugin','echoMaxUInteger',[123]);
+			}
+			
+			function messageAsMinUInteger() {
+				// RCJSBridge.exec(function(response) {
+				// 	printInfo('messageAsMinUInteger',response);
+				// },'EchoPlugin','echoMinUInteger',[123]);
+			}
+			
+			function messageAsDouble() {
+				// RCJSBridge.exec(function(response) {
+				// 	printInfo('messageAsDouble',response);
+				// },'EchoPlugin','echoDouble',[123]);
+			}
+			
+			function messageAsArray() {
+				// RCJSBridge.exec(function(response) {
+				// 	console.log('messageAsArray' + '回调成功');
+				// 	var span = document.getElementById('messageAsArray');
+				// 	var status = response.status;
+				// 	if (status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+				// 		console.log("执行失败!!");
+				// 		span.innerText = '执行失败, status = ' + status;
+				// 		return;
+				// 	}
+					
+				// 	var data = response.data;
+				// 	var showMsg = data + '->type is ' + (typeof data) + '\n'
+				// 	                   + 'data[0]=' + data[0] + `type is ${typeof data[0]}`+'\n'
+				// 					   + 'data[1]=' + data[1] + `type is ${typeof data[1]}`+'\n'
+				// 					   + 'data[2]=' + data[2] + `type is ${typeof data[2]}`+'\n'
+				// 					   + 'data[3]=' + data[3] + `type is ${typeof data[3]}`+'\n';
+				// 	span.innerText = showMsg;
+				// },'EchoPlugin','echoArray',[123]);
+			}
+			
+			function messageAsDictionary() {
+				// RCJSBridge.exec(function(response){
+				// 	console.log('messageAsDictionary 回调成功');
+				// 	var span = document.getElementById('messageAsDictionary');
+				// 	var status = response.status;
+				// 	if (status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+				// 		console.log("执行失败!!");
+				// 		span.innerText = '执行失败, status = ' + status;
+				// 		return;
+				// 	}
+				// 	var data = response.data;
+				// 	var showMsg = data + ' type is ' + (typeof data) + '\n'
+				// 	                   + ` data.anObject=${data.anObject} type is ${typeof data.anObject}\n`
+				// 					   + ` data.helloString=${data.helloString} type is ${typeof data.helloString}\n`
+				// 					   + ` data.magicNumber=${data.magicNumber} type is ${typeof data.magicNumber}\n`
+				// 					   + ` data.aValue=${data.aValue} type is ${typeof data.aValue}\n`;
+				// 	span.innerText = showMsg;
+				// },'EchoPlugin','echoDictionary',[123]);
+			}
+			
+			function messageAsBool() {
+				
+			}
+			
+			function messageAsArrayBuffer() {
+				// RCJSBridge.exec(function(response){
+				// 	console.log("messageAsBuffer 回调成功");
+				// 	var span = document.getElementById('messageAsBuffer');
+				// 	if (response.status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+				// 		console.log('执行失败!!');
+				// 		span.innerText = '执行失败, status = ' + response.status;
+				// 		return;
+				// 	}
+				// 	var dataBuffer = response.data;
+				// 	console.log(`dataBuffer type is ${typeof dataBuffer}`);
+				// 	// 将收到的这个buffer再发送回native层
+				// 	RCJSBridge.exec(function(response){
+				// 		console.log("diffArrayBuffer 回调成功");
+				// 		if (response.status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+				// 			console.log('执行失败!!');
+				// 			span.innerText = '执行失败，status = ' + response.status;
+				// 			return;
+				// 		}
+				// 		var isEquals = response.data;
+				// 		if (isEquals) {
+				// 			span.innerText = '校验messageArrayBuffer成功';
+				// 		} else {
+				// 			span.innerText = '校验messageArrayBuffer失败';
+				// 		}
+				// 	},'EchoPlugin','diffArrayBuffer',[dataBuffer]);
+				// },'EchoPlugin','echoArrayBuffer',['test.jpg']);
+			}
+			
+			function nextPage() {
+				/*
+				RCJSBridge.exec(function(response) {
+					console.log('nextPage 回调成功');
+
+				},'EchoPlugin','openNextPage');
+				*/
+				var nextPage = document.getElementById('nextPage');
+				nextPage.innerText = "hello";
+				JsObject.action();
+			}
+			
+			function keepCallback() {
+				RCJSBridge.exec(function(response){
+					console.log("keepCallback 回调成功");
+					var span = document.getElementById('keepCallback');
+					if (response.status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+						console.log('执行失败!!');
+						span.innerText = '执行失败，status = ' + response.status;
+						return;
+					}
+					span.innerText = response.data;
+				},'EchoPlugin','echoKeepCallback',['abc','jack','delay','tom','lala','ci']);
+			}
+			
+			function pressureTest() {
+				
+			}
+			
+			function callAction() {
+				RCJSBridge.callAction(function(response){
+					console.log("callAction回调成功");
+					var span = document.getElementById('callAction');
+					if (response.status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+						console.log("执行失败");
+						span.innerText = '执行失败，status = ' + response.status;
+						return;
+					}
+					span.innerText = response.data;
+				},'customAction',['abc',11,3.145]);
+			}
+			
+			function callAction1() {
+				RCJSBridge.callAction(function(response){
+					console.log("callAction1回调成功");
+					var span = document.getElementById('callAction1');
+					if (response.status != RCJSBridge.rcCommandStatus.CDVCommandStatus_OK) {
+						console.log("执行失败");
+						span.innerText = '执行失败，status = ' + response.status;
+						return;
+					}
+					span.innerText = response.data;
+				},'customAction1',['abc',11,3.145]);
+			}
+			
+		</script>
+	</head>
+
+	<body>
+		<div id="div">
+			返回值测试
+		</div>
+		<button onclick="messageAsString()">messageAsString</button>
+		<div id="messageAsString"></div>
+		<!--对ios平台： 对应 NSInteger android平台: 对应 Integer--->
+		<button onclick="messageAsInteger()">messageAsInteger</button>
+		<div id="messageAsInteger"></div>
+		<button onclick="messageAsMaxInteger()">messageAsMaxInteger</button>
+		<div id="messageAsMaxInteger"></div>
+		<button onclick="messageAsMinInteger()">messageAsMinInteger</button>
+		<div id="messageAsMinInteger"></div>
+		<!----->
+		<!----仅仅ios平台 android平台不考虑int类型，可用Integer代替---->
+		<button onclick="messageAsInt()">messageAsInt</button>
+		<div id="messageAsInt"></div>
+		<button onclick="messageAsMaxInt()">messageAsMaxInt</button>
+		<div id="messageAsMaxInt"></div>
+		<button onclick="messageAsMinInt()">messageAsMinInt</button>
+		<div id="messageAsMinInt"></div>
+		<button onclick="messageAsUInteger()">messageAsUInteger</button>
+		<div id="messageAsUInteger"></div>
+		<button onclick="messageAsMaxUInteger()">messageAsMaxUInteger</button>
+		<div id="messageAsMaxUInteger"></div>
+		<button onclick="messageAsMinUInteger()">messageAsMinUInteger</button>
+		<div id="messageAsMinUInteger"></div>
+		<!----仅仅ios平台---->
+		<button onclick="messageAsDouble()">messageAsDouble</button>
+		<div id="messageAsDouble"></div>
+		<button onclick="messageAsArray()">messageAsArray</button>
+		<div id="messageAsArray"></div>
+		<button onclick="messageAsDictionary()">messageAsDictionary</button>
+		<div id="messageAsDictionary"></div>
+		<button onclick="messageAsArrayBuffer()">messageAsBuffer</button>
+		<div id="messageAsBuffer"></div>
+		<button onclick="messageAsBool()">messageAsBool</button>
+		<div id="messageAsBool"></div>
+		<button type="button" onclick="showBase64Image()">showBase64Image</button>
+		<div id="showBase64Image"></div>
+		<button type="button" onclick="keepCallback()">keepCallback</button>
+		<div id="keepCallback">
+		</div>
+		<br/>
+		<button type="button" onclick="callAction()">callAction</button>
+		<div id="callAction">
+		</div>
+		<button type="button" onclick="callAction1()">callAction</button>
+		<div id="callAction1">
+			
+		</div>
+		<button onclick="nextPage()">跳到下一个页面</button>
+		<div id="nextPage"></div>
+	</body>
+
+</html>

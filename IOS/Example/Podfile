@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'RCJSBridge_Example' do
+  pod 'RCJSBridge', :path => '../'
+
+  target 'RCJSBridge_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

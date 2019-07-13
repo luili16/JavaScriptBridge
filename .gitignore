@@ -1,0 +1,50 @@
+/Android/*.iml
+/Android/.gradle
+/Android/local.properties
+/Android/.idea/caches
+/Android/.idea/libraries
+/Android/.idea/modules.xml
+/Android/.idea/workspace.xml
+/Android/.idea/navEditor.xml
+/Android/.idea/assetWizardSettings.xml
+.DS_Store
+/Android/build
+/Android/captures
+/Android/.externalNativeBuild
+
+/IOS/.DS_Store
+
+# Xcode
+/IOS/build/
+/IOS/*.pbxuser
+/IOS/!default.pbxuser
+/IOS/*.mode1v3
+/IOS/!default.mode1v3
+/IOS/*.mode2v3
+/IOS/!default.mode2v3
+/IOS/*.perspectivev3
+/IOS/!default.perspectivev3
+/IOS/xcuserdata/
+/IOS/*.xccheckout
+/IOS/profile
+/IOS/*.moved-aside
+/IOS/DerivedData
+/IOS/*.hmap
+/IOS/*.ipa
+
+# Bundler
+/IOS/.bundle
+
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+
+/IOS/Carthage/Build
+
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
+# 
+# Note: if you ignore the Pods directory, make sure to uncomment
+# `pod install` in .travis.yml
+#
+# Pods/

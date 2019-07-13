@@ -1,0 +1,16 @@
+PODS:
+  - RCJSBridge (2.0.7)
+
+DEPENDENCIES:
+  - RCJSBridge (from `../`)
+
+EXTERNAL SOURCES:
+  RCJSBridge:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  RCJSBridge: 145b3747cebe10edaec68144622712d85a7399f6
+
+PODFILE CHECKSUM: b4ceb50bf6b140aba7208b8d63c6c0ed6a36bbc3
+
+COCOAPODS: 1.5.3
