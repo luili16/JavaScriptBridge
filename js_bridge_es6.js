@@ -10,11 +10,12 @@ class RCJSBridgeClass {
             CDVCommandStatus_NATIVE_METHOD_EXCEPTION: 4,
             CDVCommandStatus_ERROR: 5
         };
-        this._successMap = new Map();
-        this._errorMap = new Map();
+        this._successMap = {};
+        this._errorMap = {};
         this._callbackIndex = 0;
         this._b64_6bit = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
         this._b64_12bit = this._b64_12bitTable();
+        this.platform = this.checkPlatform();
     }
 
     _b64_12bitTable() {
@@ -25,6 +26,15 @@ class RCJSBridgeClass {
             }
         }
         return b64_12bit;
+    }
+
+    checkPlatform() {
+        let ua = window.navigator.userAgent;
+        if (ua.startsWith('RCAndroid')) {
+            return 'android';
+        } else {
+            return 'ios';
+        }
     }
 
 
@@ -41,34 +51,29 @@ class RCJSBridgeClass {
         }
         args = this._massageArgsJsToNative(args);
         if (success !== null) {
-            this._successMap.set(callbackId, success);
-            this._errorMap.set(callbackId, error);
+            this._successMap.callbackId = success;
+            this._errorMap.callbackId = error;
         } else {
             // success回调是null，就说明不需要有返回值，那么callbackId就设为null
             callbackId = null;
         }
         let command = [callbackId, service, action, args];
-        // TODO 这里需要根据不同的平台进行回调
-
-        //window.webkit.messageHandlers.RCJSBridgeHandler.postMessage(command);
-        RCAndroidJSBridgeHandler.jsBridgeHandler(JSON.stringify(command));
+        
+        if (this.platform === 'ios') {
+            window.webkit.messageHandlers.RCJSBridgeHandler.postMessage(command);
+        } else {
+            RCAndroidJSBridgeHandler.jsBridgeHandler(JSON.stringify(command));
+        }
     }
 
     nativeCallback(callbackId, status, keepCallback, argumentsAsJson) {
 
-        console.log("callbackId:" + callbackId);
-        console.log("status:" + status);
-        console.log("keepCallback:" + keepCallback);
-        console.log("argumentsAsJson:" + argumentsAsJson.acount);
-        console.log("argumentsAsJson:" + argumentsAsJson.toString());
-        console.log("argumentsType: " + typeof(argumentsAsJson));
-
-        if (callbackId === null) {
+        if (callbackId === null || callbackId === '') {
             return;
         }
 
-        let success = this._successMap.get(callbackId);
-        let error = this._errorMap.get(callbackId);
+        let success = this._successMap.callbackId;
+        let error = this._errorMap.callbackId;
         if (success === null || success === 'undefined') {
             return;
         }
@@ -77,8 +82,8 @@ class RCJSBridgeClass {
         // 这里会有一个潜在的bug，当native端结束向js端发送消息，并且没有
         // 将keepCallback置为false的话，会导致js端发生内存泄漏。
         if (!Boolean(keepCallback)) {
-            this._successMap.delete(callbackId);
-            this._errorMap.delete(callbackId);
+            delete this._successMap.callbackId;
+            delete this._errorMap.callbackId;
         }
         let response = {};
         response.status = status;
@@ -120,7 +125,7 @@ class RCJSBridgeClass {
         return this._toArrayBuffer(message.data);
     }
 
-    // base64转为ArrayBuffer 
+    // base64转为ArrayBuffer
     _toArrayBuffer(b64) {
         let raw = atob(b64);
         let ret = new Uint8Array(raw.length);

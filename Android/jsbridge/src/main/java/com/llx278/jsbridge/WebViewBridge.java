@@ -7,6 +7,10 @@ import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
+import com.llx278.jsbridge.plugin.ActionCallback;
+import com.llx278.jsbridge.plugin.ActionPlugin;
+import com.llx278.jsbridge.plugin.InvokeUrlCommand;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,27 +29,32 @@ import java.util.concurrent.Executors;
  *  String           java.lang.String
  *  // js端通过JSON.stringify转为字符串，再将字符串转为org.json.JSONArray
  *  Array            org.json.JSONArray
- *  // js端通过JSON.stringify转为字符串，再将字符串转为org.json.JSONArray
+ *  // js端通过JSON.stringify转为字符串，再将字符串转为org.json.JSONObject
  *  Object           org.json.JsonObject
  *  // 通过对ArrayBuffer进行base64编码转为字符串，在java端解码转为byte[]
  *  ArrayBuffer      byte[]
  *
  */
 public class WebViewBridge {
-    static final String TAG = "WebViewBridge";
+    public static final String TAG = "WebViewBridge";
     private final ExecutorService exec = Executors.newFixedThreadPool(2);
     private final CommandDelegate delegate;
     private final Map<String,PluginHolder> plugins = new HashMap<>();
-
+    private final ActionPlugin actionPlugin = new ActionPlugin();
+    private final String js;
+    private final WebView webView;
     @SuppressLint("SetJavaScriptEnabled")
     public WebViewBridge(WebView webView) {
+        this.webView = webView;
         webView.getSettings().setJavaScriptEnabled(true);
         webView.addJavascriptInterface(this,"RCAndroidJSBridgeHandler");
-        String js = readJsCodeFromAsset(webView.getContext().getAssets());
-        WebViewClientDecorator client = new WebViewClientDecorator(null,js);
-        webView.setWebViewClient(client);
+        String userAgent = webView.getSettings().getUserAgentString();
+        webView.getSettings().setUserAgentString("RCAndroid " + userAgent);
+        js = readJsCodeFromAsset(webView.getContext().getAssets());
         delegate = new CommandDelegate(webView);
+        registerPlugin(actionPlugin);
     }
+
 
     private String readJsCodeFromAsset(AssetManager assetManager) {
         int bufSize = 1024;
@@ -53,16 +62,28 @@ public class WebViewBridge {
         int len = 0;
         ByteArrayOutputStream os = null;
         try {
-            InputStream is = assetManager.open("rc_js_bridge_babel.js");
+            InputStream is = assetManager.open("js_bridge_es5.js");
             os = new ByteArrayOutputStream();
             while ((len = is.read(buf,0,bufSize)) != -1) {
                 os.write(buf,0,len);
             }
         } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException("read rc_js_bridge.js file failed from asset folder",e);
+            throw new RuntimeException("read js_bridge_es5.js file failed from asset folder",e);
         }
         return os.toString();
+    }
+
+    @JavascriptInterface
+    public void globalInit() {
+        webView.post(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        webView.evaluateJavascript(WebViewBridge.this.js,null);
+                    }
+                }
+        );
     }
 
     @JavascriptInterface
@@ -133,6 +154,10 @@ public class WebViewBridge {
                 }
             }
         });
+    }
+
+    public synchronized void registerAction(String action, ActionCallback callback) {
+        actionPlugin.addCallback(action,callback);
     }
 
     public synchronized void registerPlugin(BasePlugin plugin) {

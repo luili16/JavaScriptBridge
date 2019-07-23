@@ -10,7 +10,7 @@ public abstract class BasePlugin {
      */
     public abstract void dispose();
 
-    public CommandDelegate getDelegate() {
+    protected CommandDelegate getDelegate() {
         return this.delegate;
     }
 }

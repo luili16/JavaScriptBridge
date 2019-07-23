@@ -36,13 +36,13 @@
         _wkWebView = wkWebView;
         _pluginsObject = [[NSMutableDictionary alloc]initWithCapacity:10];
         // inject rc_js_bridge.js
-        NSBundle* jsBridgeFrameWork = [NSBundle bundleForClass:self.class];
-        NSURL* rCJSBridgeBundleUrl = [jsBridgeFrameWork URLForResource:@"RCJSBridge" withExtension:@"bundle"];
-        NSBundle* rCJSBridgeBundle = [NSBundle bundleWithURL:rCJSBridgeBundleUrl];
-        NSString* pathForJavascriptStr = [rCJSBridgeBundle pathForResource:@"rc_js_bridge" ofType:@"js"];
-        NSString* jsStr = [NSString stringWithContentsOfFile:pathForJavascriptStr encoding:NSUTF8StringEncoding error:nil];
-        WKUserScript* script = [[WKUserScript alloc]initWithSource:jsStr injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];
-        [wkWebView.configuration.userContentController addUserScript:script];
+//        NSBundle* jsBridgeFrameWork = [NSBundle bundleForClass:self.class];
+//        NSURL* rCJSBridgeBundleUrl = [jsBridgeFrameWork URLForResource:@"RCJSBridge" withExtension:@"bundle"];
+//        NSBundle* rCJSBridgeBundle = [NSBundle bundleWithURL:rCJSBridgeBundleUrl];
+//        NSString* pathForJavascriptStr = [rCJSBridgeBundle pathForResource:@"rc_js_bridge" ofType:@"js"];
+//        NSString* jsStr = [NSString stringWithContentsOfFile:pathForJavascriptStr encoding:NSUTF8StringEncoding error:nil];
+//        WKUserScript* script = [[WKUserScript alloc]initWithSource:jsStr injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];
+//        [wkWebView.configuration.userContentController addUserScript:script];
         [wkWebView.configuration.userContentController addScriptMessageHandler:self name:@"RCJSBridgeHandler"];
         
         _commandDelegate = [[RCCommandDelegate alloc]initWithWebView:_wkWebView];
@@ -53,20 +53,6 @@
         [self registerPlugin:_handler withClassName:@"RCActionHandler#12306"];
     }
     return self;
-}
-
--(void)registerPluinInConfigFile:(NSString*)path {
-    NSFileManager* fileManager = [NSFileManager defaultManager];
-    NSData* data = [fileManager contentsAtPath:path];
-    NSArray* dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    for (int i = 0; i < dic.count; i++) {
-        NSDictionary* obj = dic[i];
-        NSDictionary* service = obj[@"service"];
-        NSString* className = service[@"className-ios"];
-        NSLog(@"className-ios : %@",className);
-        RCPlugin* plugin = [[NSClassFromString(className) alloc] init];
-        [self registerPlugin:plugin withClassName:className];
-    }
 }
 
 - (void)registerPlugin:(RCPlugin *)plugin withClassName:(NSString *)className {

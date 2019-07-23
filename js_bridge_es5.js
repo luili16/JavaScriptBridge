@@ -30,6 +30,7 @@ function () {
     this._callbackIndex = 0;
     this._b64_6bit = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
     this._b64_12bit = this._b64_12bitTable();
+    this.platform = this.checkPlatform();
   }
 
   _createClass(RCJSBridgeClass, [{
@@ -44,6 +45,17 @@ function () {
       }
 
       return b64_12bit;
+    }
+  }, {
+    key: "checkPlatform",
+    value: function checkPlatform() {
+      var ua = window.navigator.userAgent;
+
+      if (ua.startsWith('RCAndroid')) {
+        return 'android';
+      } else {
+        return 'ios';
+      }
     }
   }, {
     key: "exec",
@@ -68,19 +80,22 @@ function () {
       args = this._massageArgsJsToNative(args);
 
       if (success !== null) {
-        //this._successMap.set(callbackId, success);
-        this._successMap.callbackId = success; //this._errorMap.set(callbackId, error);
-
+        this._successMap.callbackId = success;
         this._errorMap.callbackId = error;
       } else {
         // success回调是null，就说明不需要有返回值，那么callbackId就设为null
         callbackId = null;
       }
 
-      var command = [callbackId, service, action, args]; // TODO 这里需要根据不同的平台进行回调
-      //window.webkit.messageHandlers.RCJSBridgeHandler.postMessage(command);
+      var command = [callbackId, service, action, args];
 
-      RCAndroidJSBridgeHandler.jsBridgeHandler(JSON.stringify(command));
+      if (this.platform === 'ios') {
+        console.log("in ios platform");
+        window.webkit.messageHandlers.RCJSBridgeHandler.postMessage(command);
+      } else {
+        console.log("in android platform");
+        RCAndroidJSBridgeHandler.jsBridgeHandler(JSON.stringify(command));
+      }
     }
   }, {
     key: "nativeCallback",
@@ -88,11 +103,10 @@ function () {
       console.log("callbackId:" + callbackId);
       console.log("status:" + status);
       console.log("keepCallback:" + keepCallback);
-      console.log("argumentsAsJson:" + argumentsAsJson.acount);
       console.log("argumentsAsJson:" + argumentsAsJson.toString());
       console.log("argumentsType: " + _typeof(argumentsAsJson));
 
-      if (callbackId === null) {
+      if (callbackId === null || callbackId === '') {
         return;
       }
 
@@ -109,8 +123,7 @@ function () {
 
       if (!Boolean(keepCallback)) {
         delete this._successMap.callbackId;
-        delete this._errorMap.callbackId; //this._successMap.delete(callbackId);
-        //this._errorMap.delete(callbackId);
+        delete this._errorMap.callbackId;
       }
 
       var response = {};
@@ -216,5 +229,4 @@ function () {
   return RCJSBridgeClass;
 }();
 
-window.RCPlatform = 'android';
 window.RCJSBridge = new RCJSBridgeClass();

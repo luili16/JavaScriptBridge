@@ -5,10 +5,12 @@
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
+		<!--<script type="text/javascript" src="rc_js_bridge_es5.js"></script>-->
 		<script type="application/javascript">
 
+			window.RCAndroidJSBridgeHandler.globalInit()
+
 			function passNumberToNative() {
-				console.log("platform:"+window.RCPlatform);
 				window.RCJSBridge.exec(function success(response){
 					console.log("success  返回值是 " + response.data);
 					alert("success  返回值是 " + response.data);
@@ -18,8 +20,17 @@
 				},"TestPlugin","passNumberToNative",[123,3.1415926,Number.MAX_SAFE_INTEGER,Number.MIN_SAFE_INTEGER]);
 			}
 
+			function passBooleanToNative() {
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"TestPlugin","passBooleanToNative",[false]);
+			}
+
 			function passStringToNative() {
-				console.log("platform:"+window.RCPlatform);
 				window.RCJSBridge.exec(function success(response){
 					console.log("success  返回值是 " + response.data);
 					alert("success  返回值是 " + response.data);
@@ -30,7 +41,6 @@
 			}
 
 			function passArrayToNative() {
-				console.log("platform:"+window.RCPlatform);
 				window.RCJSBridge.exec(function success(response){
 					console.log("success  返回值是 " + response.data);
 					alert("success  返回值是 " + response.data);
@@ -57,7 +67,6 @@
 					]
 				};
 
-				console.log("platform:"+window.RCPlatform);
 				window.RCJSBridge.exec(function success(response){
 					console.log("success  返回值是 " + response.data);
 					alert("success  返回值是 " + response.data);
@@ -66,13 +75,81 @@
 					alert("error : " + response.data);
 				},"TestPlugin","passObjectToNative",[obj]);
 			}
+
+			function passActionToNative() {
+				window.RCJSBridge.callAction(function success(response){
+					alert("success 返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+				},"customAction1",[123,"456"]);
+			}
+
+			function passArrayBufToNative() {
+				
+				var arr = [0x15,0xFF,0x01,0x00,0x34,0xAB,0x11,0x12,0x14,0x19];
+				var uint8 = new Uint8Array(arr);
+				var buffer = uint8.buffer;
+				var base64 = window.RCJSBridge._fromArrayBuffer(buffer);
+				console.log("base64: " + base64);
+				
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"TestPlugin","passArrayBufToNative",[base64,buffer]);
+			
+			}
+
+			function passNullArgToNative() {
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"TestPlugin","passNullToNative",[null]);
+			}
+
+			function passEmptyArgToNative() {
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"TestPlugin","passEmptyToNative",[]);
+			}
+
+			function callbackNumberFromNative() {
+
+			}
+
+			function callbackStringFromNative() {
+
+			}
+
+			function callbackArrayFromNative() {
+
+			}
+
+			function callbackObjFromNative() {
+
+			}
+
 		</script>
 	</head>
 	<body>
 		<div>hello htlm5</div>
-		<button onclick="passNumberToNative()">passNumberToNative1</button>
-		<button onclick="passStringToNative()">passStringToNative1</button>
-		<button onclick="passArrayToNative()">passArrayToNative1</button>
-		<button onclick="passObjectToNative()">passObjectToNative1</button>
+		<button onclick="passNumberToNative()">passNumberToNative1</button></br>
+		<button onclick="passStringToNative()">passStringToNative1</button></br>
+		<button onclick="passBooleanToNative()">passBooleanToNative1</button></br>
+		<button onclick="passArrayToNative()">passArrayToNative1</button></br>
+		<button onclick="passObjectToNative()">passObjectToNative1</button></br>
+		<button onclick="passActionToNative()">passActionToNative1</button></br>
+		<button onclick="passNullArgToNative()">passNullToNative1</button></br>
+		<button onclick="passEmptyArgToNative()">passEmptyToNative1</button></br>
+		<button onclick="passArrayBufToNative()">passArrayBufToNative1</button></br>
 	</body>
 </html>

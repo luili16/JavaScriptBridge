@@ -1,9 +1,12 @@
-package com.llx278.jsbridge;
+package com.llx278.jsbridge.plugin;
 
 import android.util.Log;
 
+import com.llx278.jsbridge.WebViewBridge;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class InvokeUrlCommand {
     private String callbackId;
@@ -25,7 +28,7 @@ public class InvokeUrlCommand {
         }
     }
 
-    private InvokeUrlCommand(String callbackId,String className,String methodName,JSONArray arguments) {
+    InvokeUrlCommand(String callbackId,String className,String methodName,JSONArray arguments) throws JSONException {
         this.callbackId = callbackId;
         this.className = className;
         this.methodName = methodName;
