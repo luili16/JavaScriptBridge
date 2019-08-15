@@ -94,6 +94,7 @@ public class TestPlugin extends BasePlugin {
 //       js                         android
 //     Number                      java.lang.Number // number就对应了int long double 根据需要自己转
 //     Boolean                     java.lang.Boolean
+//     String                      java.lang.String
 //     Array                       org.json.JSONArray
 //     Object                      org.json.JSONObject
 //     ArrayBuffer                 byte[]
