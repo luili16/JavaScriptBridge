@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         WebView.setWebContentsDebuggingEnabled(true);
         bridge = new WebViewBridge(webView);
         TestPlugin plugin = new TestPlugin();
+        CallbackPlugin callbackPlugin = new CallbackPlugin();
         bridge.registerPlugin(plugin);
+        bridge.registerPlugin(callbackPlugin);
         bridge.registerAction("customAction1", new ActionCallback() {
             @Override
             public void onExec(InvokeUrlCommand command, CommandDelegate delegate) throws JSONException {

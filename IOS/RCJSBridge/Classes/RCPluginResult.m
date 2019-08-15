@@ -9,7 +9,10 @@
 #import "RCPluginResult.h"
 #import "RCJSON_private.h"
 
-@interface RCPluginResult()
+@interface RCPluginResult() {
+    NSNumber* _status;
+    id _message;
+}
 - (RCPluginResult*)initWithStatus:(RCCommandStatus)statusOrdinal message:(id)theMessage;
 @end
 
@@ -24,37 +27,13 @@ id messageFromArrayBuffer(NSData* data)
              };
 }
 
-id massageMessage(id message)
-{
-    if ([message isKindOfClass:[NSData class]]) {
-        return messageFromArrayBuffer(message);
-    }
-    return message;
-}
-
-id messageFromMultipart(NSArray* theMessages)
-{
-    NSMutableArray* messages = [NSMutableArray arrayWithArray:theMessages];
-    
-    for (NSUInteger i = 0; i < messages.count; ++i) {
-        [messages replaceObjectAtIndex:i withObject:massageMessage([messages objectAtIndex:i])];
-    }
-    
+id messageFromVoid() {
     return @{
-             @"CDVType" : @"MultiPart",
-             @"messages" : messages
+             @"CDVType" : @"Void"
              };
 }
 
-+(id) message {
-    return nil;
-}
-
--(RCPluginResult*)init {
-    return [self initWithStatus:CDVCommandStatus_NO_RESULT message:nil];
-}
-
--(RCPluginResult*)initWithStatus:(RCCommandStatus)statusOrdinal message:(id)theMessage {
+-(RCPluginResult*)initWithStatus:(RCCommandStatus)statusOrdinal message:(_Nonnull id)theMessage {
     self = [super init];
     if (self) {
         _status = [NSNumber numberWithInt:statusOrdinal];
@@ -63,59 +42,32 @@ id messageFromMultipart(NSArray* theMessages)
     return self;
 }
 
-+ (RCPluginResult*)resultWithStatus:(RCCommandStatus)statusOrdinal
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:nil];
++ (RCPluginResult *)resultWithVoid:(RCCommandStatus)status {
+    return [[RCPluginResult alloc]initWithStatus:status message:messageFromVoid()];
 }
 
-+ (RCPluginResult*)resultWithStatus:(RCCommandStatus)statusOrdinal messageAsString:(NSString*)theMessage
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:theMessage];
++ (RCPluginResult *)resultWithString:(NSString *)message andStatus:(RCCommandStatus)status {
+    return [[RCPluginResult alloc] initWithStatus:status message:message];
 }
 
-+ (RCPluginResult*)resultWithStatus:(RCCommandStatus)statusOrdinal messageAsArray:(NSArray*)theMessage
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:theMessage];
++ (RCPluginResult *)resultWithNumber:(NSNumber *)message andStatus:(RCCommandStatus)status {
+    return [[RCPluginResult alloc] initWithStatus:status message:message];
 }
 
-+ (RCPluginResult*)resultWithStatus:(RCCommandStatus)statusOrdinal messageAsInt:(int)theMessage
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:[NSNumber numberWithInt:theMessage]];
++ (RCPluginResult *)resultWithBoolean:(BOOL)message andStatus:(RCCommandStatus)status {
+    return [[RCPluginResult alloc] initWithStatus:status message:[NSNumber numberWithBool:message]];
 }
 
-+ (RCPluginResult*)resultWithStatus:(RCCommandStatus)statusOrdinal messageAsNSInteger:(NSInteger)theMessage
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:[NSNumber numberWithInteger:theMessage]];
++ (RCPluginResult *)resultWithArray:(NSArray *)message andStatus:(RCCommandStatus)status {
+    return [[RCPluginResult alloc] initWithStatus:status message:message];
 }
 
-+ (RCPluginResult*)resultWithStatus:(RCCommandStatus)statusOrdinal messageAsNSUInteger:(NSUInteger)theMessage
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:[NSNumber numberWithUnsignedInteger:theMessage]];
++ (RCPluginResult *)resultWithDictionary:(NSDictionary *)message andStatus:(RCCommandStatus)status {
+    return [[RCPluginResult alloc] initWithStatus:status message:message];
 }
 
-+ (RCPluginResult*)resultWithStatus:(RCCommandStatus)statusOrdinal messageAsDouble:(double)theMessage
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:[NSNumber numberWithDouble:theMessage]];
-}
-
-+ (RCPluginResult*)resultWithStatus:(RCCommandStatus)statusOrdinal messageAsBool:(BOOL)theMessage
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:[NSNumber numberWithBool:theMessage]];
-}
-
-+ (RCPluginResult*)resultWithStatus:(RCCommandStatus)statusOrdinal messageAsDictionary:(NSDictionary*)theMessage
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:theMessage];
-}
-
-+ (RCPluginResult*)resultWithStatus:(RCCommandStatus)statusOrdinal messageAsArrayBuffer:(NSData*)theMessage
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:messageFromArrayBuffer(theMessage)];
-}
-
-+ (RCPluginResult*)resultWithStatus:(RCCommandStatus)statusOrdinal messageAsMultipart:(NSArray*)theMessages
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:messageFromMultipart(theMessages)];
++ (RCPluginResult *)resultWithArrayBuffer:(NSData *)message andStatus:(RCCommandStatus)status {
+    return [[RCPluginResult alloc] initWithStatus:status message:messageFromArrayBuffer(message)];
 }
 
 - (NSString *)argumentsAsJson {

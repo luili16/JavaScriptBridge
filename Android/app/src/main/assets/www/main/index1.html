@@ -6,6 +6,7 @@
 		<meta charset="utf-8" />
 		<title></title>
 		<!--<script type="text/javascript" src="rc_js_bridge_es5.js"></script>-->
+		<script type="text/javascript" src="md5.js"></script>
 		<script type="application/javascript">
 
 			window.RCAndroidJSBridgeHandler.globalInit()
@@ -123,20 +124,86 @@
 			}
 
 			function callbackNumberFromNative() {
-
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"CallbackPlugin","callbackNumberFromNative",["abc"]);
 			}
 
 			function callbackStringFromNative() {
-
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"CallbackPlugin","callbackStringFromNative",["abc"]);
 			}
 
 			function callbackArrayFromNative() {
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"CallbackPlugin","callbackArrayFromNative",["abc"]);
 
 			}
 
 			function callbackObjFromNative() {
+				window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					alert("success  返回值是 " + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"CallbackPlugin","callbackObjFromNative",["abc"]);
 
 			}
+
+			function callbackArrayBufferFromNative() {
+			window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是 " + response.data);
+					var _rawmd5 = md5('hello android world');
+					var _retval = md5(new Uint8Array(response.data));
+					if (_retval === _rawmd5) {
+						alert("success  md5 校验成功");
+					} else {
+						alert("success  md5 校验失败");
+					}
+
+					console.log("md5 : " + _retval);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"CallbackPlugin","callbackArrayBufferFromNative",["abc"]);
+			}
+
+			function callbackVoidFromNative() {
+			window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是应该为null:" + (response.data===null));
+					alert("success  返回值是应该为null:" + (response.data===null));
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"CallbackPlugin","callbackVoidFromNative",["abc"]);
+			}
+
+			function keepCallbackFromString() {
+			window.RCJSBridge.exec(function success(response){
+					console.log("success  返回值是:" + response.data);
+					alert("success  返回值是:" + response.data);
+				},function error(response){
+					console.log("error : " + response.data);
+					alert("error : " + response.data);
+				},"CallbackPlugin","keepCallbackFromString",["abc"]);
+			}
+
+
 
 		</script>
 	</head>
@@ -151,5 +218,12 @@
 		<button onclick="passNullArgToNative()">passNullToNative1</button></br>
 		<button onclick="passEmptyArgToNative()">passEmptyToNative1</button></br>
 		<button onclick="passArrayBufToNative()">passArrayBufToNative1</button></br>
+		<button onclick="callbackNumberFromNative()">callbackNumberFromNative1</button></br>
+		<button onclick="callbackStringFromNative()">callbackStringFromNative1</button></br>
+		<button onclick="callbackArrayFromNative()">callbackArrayFromNative1</button></br>
+		<button onclick="callbackObjFromNative()">callbackObjFromNative1</button></br>
+		<button onclick="callbackArrayBufferFromNative()">callbackArrayBufferFromNative1</button></br>
+		<button onclick="callbackVoidFromNative()">callbackVoidFromNative1</button></br>
+		<button onclick="keepCallbackFromString()">keepCallbackFromString1</button></br>
 	</body>
 </html>

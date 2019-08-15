@@ -18,18 +18,7 @@
 
 @implementation RCPlugin
 @synthesize commandDelegate = _commandDelegate;
-//- (RCPlugin *)initWithWebView:(WKWebView *)wkWebView viewController:(UIViewController *)viewController commandDelegate:(RCCommandDelegate *)commandDelegate {
-//    self = [super init];
-//    if (self) {
-//        _wkWebView = wkWebView;
-//        _viewController = viewController;
-//        _commandDelegate = commandDelegate;
-//    }
-//    return self;
-//}
 
-- (void)pluginInitialize {
-}
 - (void)dispose {
 }
 @end

@@ -2,6 +2,7 @@ package com.llx278.jsbridge;
 
 import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
@@ -36,6 +37,7 @@ import java.util.concurrent.Executors;
  *
  */
 public class WebViewBridge {
+    public static final boolean DEBUG = BuildConfig.DEBUG;
     public static final String TAG = "WebViewBridge";
     private final ExecutorService exec = Executors.newFixedThreadPool(2);
     private final CommandDelegate delegate;
@@ -44,7 +46,7 @@ public class WebViewBridge {
     private final String js;
     private final WebView webView;
     @SuppressLint("SetJavaScriptEnabled")
-    public WebViewBridge(WebView webView) {
+    public WebViewBridge(@NonNull WebView webView) {
         this.webView = webView;
         webView.getSettings().setJavaScriptEnabled(true);
         webView.addJavascriptInterface(this,"RCAndroidJSBridgeHandler");
@@ -116,7 +118,7 @@ public class WebViewBridge {
         }
         String clsName = command.getClassName();
         if (!plugins.containsKey(clsName)) {
-            String errorMsg = "can not found " + clsName;
+            String errorMsg = "could not found " + clsName;
             Log.e(TAG,errorMsg);
             PluginResult result = PluginResult.resultWithString(CommandStatus.CDVCommandStatus_CLASS_NOT_FOUND_EXCEPTION,
                     errorMsg);
@@ -126,10 +128,11 @@ public class WebViewBridge {
         String methodName = command.getMethodName();
         final PluginHolder h = plugins.get(clsName);
         if (h == null) {
+            // 永远不会进入到这里，因为前面已经判断了这个plugins一定包含指定的clsName
             return;
         }
         if (!h.jsMethods.containsKey(methodName)) {
-            String errorMsg = "can not found " + methodName;
+            String errorMsg = "could not found " + methodName;
             Log.e(TAG,errorMsg);
             PluginResult result = PluginResult.resultWithString(CommandStatus.CDVCommandStatus_INVALID_ACTION,
                     errorMsg);
@@ -172,7 +175,7 @@ public class WebViewBridge {
         }
 
         if (plugins.containsKey(clsName)) {
-            Log.e("WebViewBridge","plugin:"+clsName+" has been registered");
+            Log.e(TAG,"plugin:"+clsName+" has been registered");
             return;
         }
 

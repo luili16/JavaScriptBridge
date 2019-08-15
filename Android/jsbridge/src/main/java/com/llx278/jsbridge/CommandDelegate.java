@@ -1,28 +1,37 @@
 package com.llx278.jsbridge;
 
-import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.util.Log;
-import android.webkit.ValueCallback;
 import android.webkit.WebView;
 
 import java.util.Locale;
 
 public class CommandDelegate {
     private WebView webView;
-    CommandDelegate(WebView webView) {
+    CommandDelegate(@NonNull WebView webView) {
         this.webView = webView;
     }
 
-    public void sendPluginResult(PluginResult result, String callbackId) {
+    public void sendPluginResult(@NonNull PluginResult result, @NonNull String callbackId) {
         sendPluginResult(result,callbackId,false);
     }
 
+    /**
+     *
+     * @param result js调用的结果
+     * @param callbackId js端维护的callbackId
+     * @param keepCallback true 此次调用结束了以后，js端不会删掉这个callbackId，客户端可以连续用callbackId来发送消息，
+     *                     直到将keepCallback设置为false
+     *                     false 此次调用结束了以后，js端会删掉这个callbackId
+     */
     public void sendPluginResult(PluginResult result, String callbackId, boolean keepCallback) {
         int status = result.getStatus().getStatus();
         String value = result.argumentsAsJson();
 
         final String js = String.format(Locale.CHINA,"window.RCJSBridge.nativeCallback('%s',%d,%b,%s);",callbackId,status,keepCallback,value);
-        Log.d("main","jsStr : " + js);
+        if (WebViewBridge.DEBUG) {
+            Log.d("main","jsStr : " + js);
+        }
         if (webView != null) {
             webView.post(new Runnable() {
                 @Override

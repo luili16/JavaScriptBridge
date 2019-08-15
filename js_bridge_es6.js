@@ -39,6 +39,32 @@ class RCJSBridgeClass {
 
 
     exec(success = null, error = null, service, action, args = []) {
+
+        if (success === null) {
+            console.log("JsBridge null success function");
+            return;    
+        }
+
+        if (error === null) {
+            console.log("JsBridge null error function");
+            return;
+        }
+
+        if (service === null) {
+            console.log("JsBridge null service");
+            return;
+        }
+
+        if (action === null) {
+            console.log("JsBridge null action");
+            return;
+        }
+
+        if (args === null) {
+            console.log("JsBridge null args");
+            return;
+        }
+
         this._callbackIndex++;
         if (this._callbackIndex === Number.MAX_SAFE_INTEGER) {
             this._callbackIndex = 0;
@@ -50,13 +76,8 @@ class RCJSBridgeClass {
             args = [];
         }
         args = this._massageArgsJsToNative(args);
-        if (success !== null) {
-            this._successMap.callbackId = success;
-            this._errorMap.callbackId = error;
-        } else {
-            // success回调是null，就说明不需要有返回值，那么callbackId就设为null
-            callbackId = null;
-        }
+        this._successMap.callbackId = success;
+        this._errorMap.callbackId = error;
         let command = [callbackId, service, action, args];
         
         if (this.platform === 'ios') {
@@ -118,11 +139,17 @@ class RCJSBridgeClass {
     }
 
     _massageMessageNativeToJs(message) {
-        if (message.CDVType !== 'ArrayBuffer') {
-            return message;
+        if (message.CDVType === 'ArrayBuffer') {
+            // 将base64转为ArrayBuffer
+            return this._toArrayBuffer(message.data);
         }
-        // 将base64转为ArrayBuffer
-        return this._toArrayBuffer(message.data);
+
+        if (message.CDVType === 'Void') {
+            // native端没有返回值
+            return null;
+        }
+        
+        return message;
     }
 
     // base64转为ArrayBuffer

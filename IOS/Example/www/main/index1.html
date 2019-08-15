@@ -1,141 +1,229 @@
 <!DOCTYPE html>
 <html>
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<meta name="viewport" content="width=width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0" />
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-		<!-- <script type="application/javascript" src="rc_js_bridge.js"></script> -->
-		<script type="application/javascript">
-			function passIntArgument() {
-				RCJSBridge.exec(null, null,"InputPlugin", 'NSNumberArgument', [11234, 2324343565767, 3.1415926]);
-			}
-
-			function passStringArgument() {
-				RCJSBridge.exec(null, null,"InputPlugin", "StringArgument", ["hello from javascript world!!"]);
-			}
-
-			function passArrayArgument() {
-				RCJSBridge.exec(null, null,"InputPlugin", "NSArrayArgument", [
-					[1234, "hello world!!", 3.14159]
-				]);
-			}
-
-			function passObjectArgument() {
-				var obj = {
-					num: 111,
-					str: "this is a string",
-					aObj: {
-						catetory: "people",
-						flo: 3.1233
-					},
-					arr: ["arr2", 223, "arr3"]
-				};
-
-				// js中的obj对应objective-c的dictionary
-				RCJSBridge.exec(null, null,"InputPlugin", "NSDictionaryArgument", [obj]);
-			}
-
-			function passNullArgument() {
-				RCJSBridge.exec(null, null,"InputPlugin", "NSNullArgument", [null]);
-			}
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0" />
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <!--<script type="text/javascript" src="rc_js_bridge_es5.js"></script>-->
+        <script type="text/javascript" src="md5.js"></script>
+        <script type="application/javascript">
+            
+            window.RCAndroidJSBridgeHandler.globalInit()
+            
+            function passNumberToNative() {
+                window.RCJSBridge.exec(function success(response){
+                                       console.log("success  返回值是 " + response.data);
+                                       alert("success  返回值是 " + response.data);
+                                       },function error(response){
+                                       console.log("error : " + response.data);
+                                       alert("error : " + response.data);
+                                       },"TestPlugin","passNumberToNative",[123,3.1415926,Number.MAX_SAFE_INTEGER,Number.MIN_SAFE_INTEGER]);
+            }
         
-        function passUndefinedArgument() {
-            var ssss;
-            console.log("passUndefinedArgument ss" + ssss);
-            RCJSBridge.exec(null,null,"InputPlugin","NSUndefinedArgument",[ssss]);
+        function passBooleanToNative() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   alert("success  返回值是 " + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"TestPlugin","passBooleanToNative",[false]);
         }
-
-			/**
-			 * 
-			 * 测试目标，多个插件混合调用互不影响，都能得到各自的回调结果
-			 * 
-			 */
-			function test() {
-				var pluginNames = ['TestPlugin1', 'TestPlugin2', 'TestPlugin3', 'TestPlugin4', 'TestPlugin5'];
-				var actionNames = ['echoString'];
-				var divContent = document.getElementById('pressureTest');
-				var remainTastTxt = document.getElementById('remainTask');
-				var taskCount = document.getElementById('count').value;
-				var taskTimeInterval = document.getElementById('timeInterval').value;
-				var totalTime = document.getElementById('waitSeconds').value;
-				var taskMap = new Map();
-				// 循环将任务发送出去
-				//var i = 0;
-				for (var i = 0; i < taskCount; i++) {
-					var args = i.toString() + "_jsString";
-					var index = getRandomInt(5);
-					var pluginName = pluginNames[index];
-					taskMap.set(i,args);
-					RCJSBridge.exec(function(response) {
-						var thisIndex = response.data[1];
-						var fromJsValue = taskMap.get(thisIndex);
-						console.log("fromJsValue : " + fromJsValue);
-						taskMap.delete(thisIndex);
-						console.log(`已完成任务数:${taskCount - taskMap.size}`);
-						remainTastTxt.innerText = `已完成任务数:${taskCount - taskMap.size}`;
-						console.log(fromJsValue);
-						console.log(response.data);
-						if (fromJsValue !== response.data[0]) {
-							divContent.innerText = 'test failed!! ';
-						}
-                                    }, function(response){
-                                    console.log("response!!!!");
-                                    },pluginName, actionNames[0], [args,i]);
-				}
-				
-				setTimeout(function(){
-					if (taskMap.size !== 0) {
-						divContent.innerText = `有${taskMap.size}个任务没有完成`;
-					} else {
-						divContent.innerText = "all done!!!";
-					}
-				},1000 * totalTime);
-			}
-
-			function getRandomInt(max) {
-				return Math.floor(Math.random() * Math.floor(max));
-			}
         
-        function defferTest() {
-            RCJSBridge.exec(function(response){
-                            
-                            var c = document.getElementById("defferTest");
-                            c.innerText = response.data;
-                            },function(response){
-                            
-                            }, "InputPlugin","defferCallback",null);
-                            
+        function passStringToNative() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   alert("success  返回值是 " + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"TestPlugin","passStringToNative",["hello world!"]);
         }
-		</script>
-	</head>
-	<body>
-		<div>hello htlm5</div>
-		<button onclick="passIntArgument()">passIntArgument</button>
-		<div id="passIntArgument">
-		</div>
-		<button type="button" onclick="passStringArgument()">passStringArgument</button>
-		<div id="passStringArgument">
-		</div>
-		<button type="button" onclick="passArrayArgument()">passArrayArgument</button>
-		<div id="passArrayArgument">
-		</div>
-		<button type="button" onclick="passObjectArgument()">passObjectArgument</button>
-		<div id="passObjectArgument">
-
-		</div>
-		<button type="button" onclick="passNullArgument()">passNullArgument</button>
-        <button type="button" onclick="passUndefinedArgument()">passUndefinedArgument</button>
-		</br>
-		<span>任务数:</span><input type="number" name="count" id="count" value="10"></input></br>
-		<span>每个任务之间的时间间隔(ms):</span><input type="number" name="timeInterval" id="timeInterval" value="100"></input></br>
-		<span>最长等待时间(s):</span><input type="number" id="waitSeconds" value='10'></input></br>
-		<button type="button" onclick="test()">pressureTest</button>
-		<div id="pressureTest">
-		</div>
-		<div id="remainTask"></div>
-        <button type="button" onclick="defferTest()">defferTest</button>
-        <div id="defferTest">
-        </div>
-	</body>
+        
+        function passArrayToNative() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   alert("success  返回值是 " + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"TestPlugin","passArrayToNative",[["hello world",123,3.1345555]]);
+        }
+        
+        function passObjectToNative() {
+            
+            var obj = {
+                "user":"lixin",
+                "info":"this is a description",
+                "account":1234,
+                "map":{
+                    "map0":"map0",
+                    "map1":"map1"
+                },
+                "array":[
+                         "abc",
+                         "def",
+                         456
+                         ]
+            };
+            
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   alert("success  返回值是 " + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"TestPlugin","passObjectToNative",[obj]);
+        }
+        
+        function passActionToNative() {
+            window.RCJSBridge.callAction(function success(response){
+                                         alert("success 返回值是 " + response.data);
+                                         },function error(response){
+                                         console.log("error : " + response.data);
+                                         },"customAction1",[123,"456"]);
+        }
+        
+        function passArrayBufToNative() {
+            
+            var arr = [0x15,0xFF,0x01,0x00,0x34,0xAB,0x11,0x12,0x14,0x19];
+            var uint8 = new Uint8Array(arr);
+            var buffer = uint8.buffer;
+            var base64 = window.RCJSBridge._fromArrayBuffer(buffer);
+            console.log("base64: " + base64);
+            
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   alert("success  返回值是 " + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"TestPlugin","passArrayBufToNative",[base64,buffer]);
+                                   
+        }
+        
+        function passNullArgToNative() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   alert("success  返回值是 " + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"TestPlugin","passNullToNative",[null]);
+        }
+        
+        function passEmptyArgToNative() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   alert("success  返回值是 " + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"TestPlugin","passEmptyToNative",[]);
+        }
+        
+        function callbackNumberFromNative() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   alert("success  返回值是 " + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"CallbackPlugin","callbackNumberFromNative",["abc"]);
+        }
+        
+        function callbackStringFromNative() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   alert("success  返回值是 " + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"CallbackPlugin","callbackStringFromNative",["abc"]);
+        }
+        
+        function callbackArrayFromNative() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   alert("success  返回值是 " + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"CallbackPlugin","callbackArrayFromNative",["abc"]);
+                                   
+        }
+        
+        function callbackObjFromNative() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   alert("success  返回值是 " + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"CallbackPlugin","callbackObjFromNative",["abc"]);
+                                   
+        }
+        
+        function callbackArrayBufferFromNative() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是 " + response.data);
+                                   var _rawmd5 = md5('hello android world');
+                                   var _retval = md5(new Uint8Array(response.data));
+                                   if (_retval === _rawmd5) {
+                                   alert("success  md5 校验成功");
+                                   } else {
+                                   alert("success  md5 校验失败");
+                                   }
+                                   
+                                   console.log("md5 : " + _retval);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"CallbackPlugin","callbackArrayBufferFromNative",["abc"]);
+        }
+        
+        function callbackVoidFromNative() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是应该为null:" + (response.data===null));
+                                   alert("success  返回值是应该为null:" + (response.data===null));
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"CallbackPlugin","callbackVoidFromNative",["abc"]);
+        }
+        
+        function keepCallbackFromString() {
+            window.RCJSBridge.exec(function success(response){
+                                   console.log("success  返回值是:" + response.data);
+                                   alert("success  返回值是:" + response.data);
+                                   },function error(response){
+                                   console.log("error : " + response.data);
+                                   alert("error : " + response.data);
+                                   },"CallbackPlugin","keepCallbackFromString",["abc"]);
+        }
+        
+        
+        
+            </script>
+    </head>
+    <body>
+        <div>hello htlm5</div>
+        <button onclick="passNumberToNative()">passNumberToNative1</button></br>
+        <button onclick="passStringToNative()">passStringToNative1</button></br>
+        <button onclick="passBooleanToNative()">passBooleanToNative1</button></br>
+        <button onclick="passArrayToNative()">passArrayToNative1</button></br>
+        <button onclick="passObjectToNative()">passObjectToNative1</button></br>
+        <button onclick="passActionToNative()">passActionToNative1</button></br>
+        <button onclick="passNullArgToNative()">passNullToNative1</button></br>
+        <button onclick="passEmptyArgToNative()">passEmptyToNative1</button></br>
+        <button onclick="passArrayBufToNative()">passArrayBufToNative1</button></br>
+        <button onclick="callbackNumberFromNative()">callbackNumberFromNative1</button></br>
+        <button onclick="callbackStringFromNative()">callbackStringFromNative1</button></br>
+        <button onclick="callbackArrayFromNative()">callbackArrayFromNative1</button></br>
+        <button onclick="callbackObjFromNative()">callbackObjFromNative1</button></br>
+        <button onclick="callbackArrayBufferFromNative()">callbackArrayBufferFromNative1</button></br>
+        <button onclick="callbackVoidFromNative()">callbackVoidFromNative1</button></br>
+        <button onclick="keepCallbackFromString()">keepCallbackFromString1</button></br>
+    </body>
 </html>

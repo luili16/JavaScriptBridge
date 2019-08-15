@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)sendPluginResult:(RCPluginResult*)pluginResult callbackId:(NSString*)callbackId;
 // keepCallback: true 通知js端不要删除这个callbackid，false 通知js端删除这个callbackid
 -(void)sendPluginResult:(RCPluginResult *)pluginResult callbackId:(NSString *)callbackId keepCallback:(BOOL)keepCallback;
--(void)evalJs:(NSString*)js;
 -(void)dispose;
 @end
 

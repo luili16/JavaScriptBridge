@@ -15,8 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RCPlugin : NSObject {
 }
 @property RCCommandDelegate* commandDelegate;
-//-(RCPlugin*)initWithWebView:(WKWebView*)wkWebView viewController:(UIViewController*)viewController commandDelegate:(RCCommandDelegate*)commandDelegate;
-- (void)pluginInitialize;
+/**
+ * 这个方法由WebViewBridge回调，WebViewBridge需要在合适的地方调用
+ * {@link WebViewBridge#dispose()}来通知Plugin webview已经被销毁了
+ * 例如在ViewControler中的onViewDidRemoved方法里面调用
+ */
 -(void)dispose;
 @end
 

@@ -3,7 +3,6 @@ package com.llx278.javascriptbridgedemo;
 import android.util.Base64;
 import android.util.Log;
 
-import com.google.gson.JsonArray;
 import com.llx278.jsbridge.BasePlugin;
 import com.llx278.jsbridge.CommandStatus;
 import com.llx278.jsbridge.Convert;

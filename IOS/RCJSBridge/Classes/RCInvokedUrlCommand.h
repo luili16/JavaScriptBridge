@@ -19,17 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,readonly,strong) NSArray* arguments;
 
 +(RCInvokedUrlCommand*)commandFrom:(NSArray*)jsonEntry;
-
 -(id)initWithArguments:(NSString*)callbadkId className:(NSString*)className methodName:(NSString*)methodName arguments:(NSArray*)argumets;
--(id)initFromJson:(NSArray*)jsonEntry;
-// Returns the argument at the given index.
-// If index >= the number of arguments, returns nil.
-// If the argument at the given index is NSNull, returns nil.
--(id)argumentsAtIndex:(NSUInteger)index;
-// Same as above, but returns defaultValue instead of nil.
--(id)argumentsAtIndex:(NSUInteger)index withDefault:(nullable id)defaultValue;
-// Same as above, but returns defaultValue instead of nil, and if the argument is not of the expected class, returns defaultValue
--(id)argumentsAtIndex:(NSUInteger)index withDefault:(nullable id)defaultValue andClass:(nullable Class)aClass;
 @end
 
 NS_ASSUME_NONNULL_END

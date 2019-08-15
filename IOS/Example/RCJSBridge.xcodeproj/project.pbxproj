@@ -7,18 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B37A5AB222CD5A1004ACA18 /* NextPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B37A598222CD5A1004ACA18 /* NextPageViewController.m */; };
-		1B37A5AC222CD5A1004ACA18 /* EchoPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B37A59D222CD5A1004ACA18 /* EchoPlugin.m */; };
-		1B37A5AD222CD5A1004ACA18 /* InputPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B37A59E222CD5A1004ACA18 /* InputPlugin.m */; };
-		1B37A5AE222CD5A1004ACA18 /* TestPlugin3.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B37A5A2222CD5A1004ACA18 /* TestPlugin3.m */; };
-		1B37A5AF222CD5A1004ACA18 /* TestPlugin4.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B37A5A4222CD5A1004ACA18 /* TestPlugin4.m */; };
-		1B37A5B0222CD5A1004ACA18 /* TestPlugin5.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B37A5A6222CD5A1004ACA18 /* TestPlugin5.m */; };
-		1B37A5B1222CD5A1004ACA18 /* TestPlugin1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B37A5A7222CD5A1004ACA18 /* TestPlugin1.m */; };
-		1B37A5B2222CD5A1004ACA18 /* TestPlugin2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B37A5A9222CD5A1004ACA18 /* TestPlugin2.m */; };
 		1B37A5B3222CD5A1004ACA18 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B37A5AA222CD5A1004ACA18 /* ViewController.m */; };
 		1B37A5B6222CD5AC004ACA18 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 1B37A5B4222CD5AC004ACA18 /* www */; };
 		1B37A5B7222CD5AC004ACA18 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B37A5B5222CD5AC004ACA18 /* test.jpg */; };
-		1B6FC6A42270743B005CA7BE /* RCTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6FC6A32270743B005CA7BE /* RCTestViewController.m */; };
+		1B4163372302BA1C009FCB34 /* RCTestPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4163362302BA1C009FCB34 /* RCTestPlugin.m */; };
+		1B41633A2302BA2C009FCB34 /* RCCallbackPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4163392302BA2C009FCB34 /* RCCallbackPlugin.m */; };
 		5E205E2BD50CD6D90BEB0B0D /* Pods_RCJSBridge_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A7756243134BC976C66408 /* Pods_RCJSBridge_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -26,7 +19,6 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* RCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* RCAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* RCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* RCViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -50,28 +42,14 @@
 
 /* Begin PBXFileReference section */
 		00C8C99529DD725E12492C09 /* Pods-RCJSBridge_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCJSBridge_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RCJSBridge_Tests/Pods-RCJSBridge_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		1B37A598222CD5A1004ACA18 /* NextPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextPageViewController.m; sourceTree = "<group>"; };
-		1B37A599222CD5A1004ACA18 /* InputPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputPlugin.h; sourceTree = "<group>"; };
-		1B37A59A222CD5A1004ACA18 /* NextPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextPageViewController.h; sourceTree = "<group>"; };
 		1B37A59B222CD5A1004ACA18 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1B37A59C222CD5A1004ACA18 /* EchoPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchoPlugin.h; sourceTree = "<group>"; };
-		1B37A59D222CD5A1004ACA18 /* EchoPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EchoPlugin.m; sourceTree = "<group>"; };
-		1B37A59E222CD5A1004ACA18 /* InputPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputPlugin.m; sourceTree = "<group>"; };
-		1B37A5A0222CD5A1004ACA18 /* TestPlugin1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPlugin1.h; sourceTree = "<group>"; };
-		1B37A5A1222CD5A1004ACA18 /* TestPlugin5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPlugin5.h; sourceTree = "<group>"; };
-		1B37A5A2222CD5A1004ACA18 /* TestPlugin3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPlugin3.m; sourceTree = "<group>"; };
-		1B37A5A3222CD5A1004ACA18 /* TestPlugin2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPlugin2.h; sourceTree = "<group>"; };
-		1B37A5A4222CD5A1004ACA18 /* TestPlugin4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPlugin4.m; sourceTree = "<group>"; };
-		1B37A5A5222CD5A1004ACA18 /* TestPlugin3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPlugin3.h; sourceTree = "<group>"; };
-		1B37A5A6222CD5A1004ACA18 /* TestPlugin5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPlugin5.m; sourceTree = "<group>"; };
-		1B37A5A7222CD5A1004ACA18 /* TestPlugin1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPlugin1.m; sourceTree = "<group>"; };
-		1B37A5A8222CD5A1004ACA18 /* TestPlugin4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPlugin4.h; sourceTree = "<group>"; };
-		1B37A5A9222CD5A1004ACA18 /* TestPlugin2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPlugin2.m; sourceTree = "<group>"; };
 		1B37A5AA222CD5A1004ACA18 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1B37A5B4222CD5AC004ACA18 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		1B37A5B5222CD5AC004ACA18 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
-		1B6FC6A22270743B005CA7BE /* RCTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTestViewController.h; sourceTree = "<group>"; };
-		1B6FC6A32270743B005CA7BE /* RCTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTestViewController.m; sourceTree = "<group>"; };
+		1B4163352302BA1C009FCB34 /* RCTestPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTestPlugin.h; sourceTree = "<group>"; };
+		1B4163362302BA1C009FCB34 /* RCTestPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTestPlugin.m; sourceTree = "<group>"; };
+		1B4163382302BA2C009FCB34 /* RCCallbackPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCCallbackPlugin.h; sourceTree = "<group>"; };
+		1B4163392302BA2C009FCB34 /* RCCallbackPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCCallbackPlugin.m; sourceTree = "<group>"; };
 		1E8602D912CAA848ED5E15BD /* Pods-RCJSBridge_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCJSBridge_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RCJSBridge_Example/Pods-RCJSBridge_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1F29250DF36B32155D1B77AC /* Pods_RCJSBridge_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCJSBridge_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30051B92EE02E65C44207B64 /* Pods-RCJSBridge_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCJSBridge_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RCJSBridge_Tests/Pods-RCJSBridge_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,8 +64,6 @@
 		6003F59B195388D20070C39A /* RCJSBridge-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RCJSBridge-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* RCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* RCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* RCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* RCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* RCJSBridge_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RCJSBridge_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -129,23 +105,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1B37A59F222CD5A1004ACA18 /* plugins */ = {
-			isa = PBXGroup;
-			children = (
-				1B37A5A0222CD5A1004ACA18 /* TestPlugin1.h */,
-				1B37A5A1222CD5A1004ACA18 /* TestPlugin5.h */,
-				1B37A5A2222CD5A1004ACA18 /* TestPlugin3.m */,
-				1B37A5A3222CD5A1004ACA18 /* TestPlugin2.h */,
-				1B37A5A4222CD5A1004ACA18 /* TestPlugin4.m */,
-				1B37A5A5222CD5A1004ACA18 /* TestPlugin3.h */,
-				1B37A5A6222CD5A1004ACA18 /* TestPlugin5.m */,
-				1B37A5A7222CD5A1004ACA18 /* TestPlugin1.m */,
-				1B37A5A8222CD5A1004ACA18 /* TestPlugin4.h */,
-				1B37A5A9222CD5A1004ACA18 /* TestPlugin2.m */,
-			);
-			path = plugins;
-			sourceTree = "<group>";
-		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -185,25 +144,18 @@
 		6003F593195388D20070C39A /* Example for RCJSBridge */ = {
 			isa = PBXGroup;
 			children = (
-				1B37A59C222CD5A1004ACA18 /* EchoPlugin.h */,
-				1B37A59D222CD5A1004ACA18 /* EchoPlugin.m */,
-				1B37A599222CD5A1004ACA18 /* InputPlugin.h */,
-				1B37A59E222CD5A1004ACA18 /* InputPlugin.m */,
-				1B37A59A222CD5A1004ACA18 /* NextPageViewController.h */,
-				1B37A598222CD5A1004ACA18 /* NextPageViewController.m */,
-				1B37A59F222CD5A1004ACA18 /* plugins */,
 				1B37A59B222CD5A1004ACA18 /* ViewController.h */,
 				1B37A5AA222CD5A1004ACA18 /* ViewController.m */,
 				6003F59C195388D20070C39A /* RCAppDelegate.h */,
 				6003F59D195388D20070C39A /* RCAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* RCViewController.h */,
-				6003F5A6195388D20070C39A /* RCViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
-				1B6FC6A22270743B005CA7BE /* RCTestViewController.h */,
-				1B6FC6A32270743B005CA7BE /* RCTestViewController.m */,
+				1B4163352302BA1C009FCB34 /* RCTestPlugin.h */,
+				1B4163362302BA1C009FCB34 /* RCTestPlugin.m */,
+				1B4163382302BA2C009FCB34 /* RCCallbackPlugin.h */,
+				1B4163392302BA2C009FCB34 /* RCCallbackPlugin.m */,
 			);
 			name = "Example for RCJSBridge";
 			path = RCJSBridge;
@@ -388,7 +340,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-RCJSBridge_Example/Pods-RCJSBridge_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-RCJSBridge_Example/Pods-RCJSBridge_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RCJSBridge/RCJSBridge.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -397,7 +349,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RCJSBridge_Example/Pods-RCJSBridge_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RCJSBridge_Example/Pods-RCJSBridge_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A7A46F823720A53079C3D83E /* [CP] Check Pods Manifest.lock */ = {
@@ -426,18 +378,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* RCAppDelegate.m in Sources */,
-				1B37A5B0222CD5A1004ACA18 /* TestPlugin5.m in Sources */,
-				1B6FC6A42270743B005CA7BE /* RCTestViewController.m in Sources */,
-				6003F5A7195388D20070C39A /* RCViewController.m in Sources */,
-				1B37A5AE222CD5A1004ACA18 /* TestPlugin3.m in Sources */,
-				1B37A5AF222CD5A1004ACA18 /* TestPlugin4.m in Sources */,
-				1B37A5AB222CD5A1004ACA18 /* NextPageViewController.m in Sources */,
+				1B4163372302BA1C009FCB34 /* RCTestPlugin.m in Sources */,
 				1B37A5B3222CD5A1004ACA18 /* ViewController.m in Sources */,
-				1B37A5AC222CD5A1004ACA18 /* EchoPlugin.m in Sources */,
+				1B41633A2302BA2C009FCB34 /* RCCallbackPlugin.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				1B37A5B1222CD5A1004ACA18 /* TestPlugin1.m in Sources */,
-				1B37A5AD222CD5A1004ACA18 /* InputPlugin.m in Sources */,
-				1B37A5B2222CD5A1004ACA18 /* TestPlugin2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

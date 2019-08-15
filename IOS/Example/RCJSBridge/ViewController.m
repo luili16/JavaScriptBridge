@@ -9,8 +9,8 @@
 #import "ViewController.h"
 #import <WebKit/WebKit.h>
 #import <RCJSBridge/RCJSBridge-umbrella.h>
-#import "EchoPlugin.h"
-#import "InputPlugin.h"
+#import "RCTestPlugin.h"
+#import "RCCallbackPlugin.h"
 
 @interface ViewController () {
     @private
@@ -29,50 +29,51 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     _configuration = [[WKWebViewConfiguration alloc]init];
-  //  WKUserContentController* controller = [[WKUserContentController alloc]init];
     _wkWebView = [[WKWebView alloc]initWithFrame:self.view.frame configuration:_configuration];
     _webViewEngine = [[RCWebViewBridge alloc]initWithWkWebView:_wkWebView];
-    EchoPlugin* echoPlugin = [[EchoPlugin alloc] initWithViewController:self];
-    InputPlugin* inputPlugin = [[InputPlugin alloc] init];
-    [_webViewEngine registerPlugin:echoPlugin];
-    [_webViewEngine registerPlugin:inputPlugin];
+    [_webViewEngine registerPlugin:[[RCTestPlugin alloc]init] withClassName:@"TestPlugin"];
+    [_webViewEngine registerPlugin:[[RCCallbackPlugin alloc]init] withClassName:@"CallbackPlugin"];
     [self.view addSubview:_wkWebView];
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"index.html" ofType:nil inDirectory:@"www/default"];
+    [_wkWebView setUIDelegate:self];
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"index1.html" ofType:nil inDirectory:@"www/main"];
     NSURL* url = [NSURL fileURLWithPath:path];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     [_wkWebView loadRequest:request];
+}
+
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message?:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler();
+    }])];
+    [self presentViewController:alertController animated:YES completion:nil];
     
-    [_webViewEngine registerAction:@"customAction" callback:^(RCInvokedUrlCommand * _Nonnull command, RCCommandDelegate * _Nonnull delegate) {
-        NSString* arg0 = command.arguments[0];
-        NSNumber* arg1 = command.arguments[1];
-        NSNumber* arg2 = command.arguments[2];
-        NSLog(@"arg0: %@, arg1:%d, arg2:%f",arg0,[arg1 intValue],[arg2 doubleValue]);
-        RCPluginResult* result = [RCPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"call Custom Action success"];
-        [delegate sendPluginResult:result callbackId:command.callbackId];
+}
+- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completionHandler{
+    //    DLOG(@"msg = %@ frmae = %@",message,frame);
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message?:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(NO);
+    }])];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(YES);
+    }])];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable))completionHandler{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:prompt message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.text = defaultText;
     }];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"完成" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(alertController.textFields[0].text?:@"");
+    }])];
     
-    [_webViewEngine registerAction:@"customAction1" callback:^(RCInvokedUrlCommand * _Nonnull command, RCCommandDelegate * _Nonnull delegate) {
-        NSString* arg0 = command.arguments[0];
-        NSNumber* arg1 = command.arguments[1];
-        NSNumber* arg2 = command.arguments[2];
-        NSLog(@"arg0: %@, arg1:%d, arg2:%f",arg0,[arg1 intValue],[arg2 doubleValue]);
-        RCPluginResult* result = [RCPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"call Custom Action1 success"];
-        [delegate sendPluginResult:result callbackId:command.callbackId];
-    }];
     
-    [_webViewEngine registerAction:@"customAction2" callback:^(RCInvokedUrlCommand * _Nonnull command, RCCommandDelegate * _Nonnull delegate) {
-        NSString* arg0 = command.arguments[0];
-        NSNumber* arg1 = command.arguments[1];
-        NSNumber* arg2 = command.arguments[2];
-        NSLog(@"arg0: %@, arg1:%d, arg2:%f",arg0,[arg1 intValue],[arg2 doubleValue]);
-        RCPluginResult* result = [RCPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"call Custom Action1 failed"];
-        [delegate sendPluginResult:result callbackId:command.callbackId];
-    }];
-    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    
 }
 
 - (void)dealloc

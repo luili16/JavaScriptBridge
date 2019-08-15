@@ -1,18 +1,18 @@
 package com.llx278.jsbridge.plugin;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.llx278.jsbridge.WebViewBridge;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 public class InvokeUrlCommand {
-    private String callbackId;
-    private String className;
-    private String methodName;
-    private JSONArray arguments;
+    private @NonNull final String callbackId;
+    private @NonNull final String className;
+    private @NonNull final String methodName;
+    private @NonNull final JSONArray arguments;
 
     public static InvokeUrlCommand commandFrom(String jsonArrayStr) {
         try {
@@ -28,26 +28,33 @@ public class InvokeUrlCommand {
         }
     }
 
-    InvokeUrlCommand(String callbackId,String className,String methodName,JSONArray arguments) throws JSONException {
+    /**
+     * 代表一次js端的调用
+     * @param callbackId 标志一个唯一的js调用
+     * @param className 类名
+     * @param methodName 方法名
+     * @param arguments 参数
+     */
+    InvokeUrlCommand(@NonNull String callbackId, @NonNull String className, @NonNull String methodName, @NonNull JSONArray arguments) {
         this.callbackId = callbackId;
         this.className = className;
         this.methodName = methodName;
         this.arguments = arguments;
     }
 
-    public String getCallbackId() {
+    public @NonNull String getCallbackId() {
         return callbackId;
     }
 
-    public String getClassName() {
+    public @NonNull String getClassName() {
         return className;
     }
 
-    public String getMethodName() {
+    public @NonNull String getMethodName() {
         return methodName;
     }
 
-    public JSONArray getArguments() {
+    public @NonNull JSONArray getArguments() {
         return arguments;
     }
 }

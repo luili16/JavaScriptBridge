@@ -32,7 +32,6 @@
     int status = [pluginResult.status intValue];
     NSString* argumentsAsJson = [pluginResult argumentsAsJson];
     NSString* js = [NSString stringWithFormat:@"window.RCJSBridge.nativeCallback('%@',%d,%d,%@);",callbackId,status,keepCallback,argumentsAsJson];
-    //NSLog(@"PluginResult:status=%d result=%@",status,argumentsAsJson);
     [self evalJs:js];
 }
 

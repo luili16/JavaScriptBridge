@@ -16,10 +16,6 @@
 @synthesize arguments=_arguments;
 
 +(RCInvokedUrlCommand*)commandFrom:(NSArray *)jsonEntry {
-    return [[RCInvokedUrlCommand alloc] initFromJson:jsonEntry];
-}
-
--(id)initFromJson:(NSArray *)jsonEntry {
     
     NSString* callbackId = jsonEntry[0];
     NSString* className = jsonEntry[1];
@@ -30,8 +26,8 @@
     } else {
         arguments = jsonEntry[3];
     }
-
-    return [self initWithArguments:callbackId className:className methodName:methodName arguments:arguments];
+    
+    return [[RCInvokedUrlCommand alloc] initWithArguments:callbackId className:className methodName:methodName arguments:arguments];
 }
 
 - (id)initWithArguments:(NSString *)callbadkId className:(NSString *)className methodName:(NSString *)methodName arguments:(NSArray *)argumets {
@@ -72,28 +68,6 @@
         }
         [newArgs replaceObjectAtIndex:i withObject:[[NSData alloc] initWithBase64EncodedString:data options:0]];
     }
-}
-
--(id)argumentsAtIndex:(NSUInteger)index {
-    return [self argumentsAtIndex:index withDefault:nil];
-}
-
--(id)argumentsAtIndex:(NSUInteger)index withDefault:(id)defaultValue {
-    return [self argumentsAtIndex:index withDefault:defaultValue andClass:nil];
-}
-
--(id)argumentsAtIndex:(NSUInteger)index withDefault:(id)defaultValue andClass:(Class)aClass {
-    if (index >= [_arguments count]) {
-        return defaultValue;
-    }
-    id ret = _arguments[index];
-    if (ret == [NSNull null]) {
-        ret = defaultValue;
-    }
-    if ((aClass != nil) && ![ret isKindOfClass:aClass]) {
-        ret = defaultValue;
-    }
-    return ret;
 }
 
 @end

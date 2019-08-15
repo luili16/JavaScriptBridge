@@ -35,14 +35,14 @@
     if (self) {
         _wkWebView = wkWebView;
         _pluginsObject = [[NSMutableDictionary alloc]initWithCapacity:10];
-        // inject rc_js_bridge.js
-//        NSBundle* jsBridgeFrameWork = [NSBundle bundleForClass:self.class];
-//        NSURL* rCJSBridgeBundleUrl = [jsBridgeFrameWork URLForResource:@"RCJSBridge" withExtension:@"bundle"];
-//        NSBundle* rCJSBridgeBundle = [NSBundle bundleWithURL:rCJSBridgeBundleUrl];
-//        NSString* pathForJavascriptStr = [rCJSBridgeBundle pathForResource:@"rc_js_bridge" ofType:@"js"];
-//        NSString* jsStr = [NSString stringWithContentsOfFile:pathForJavascriptStr encoding:NSUTF8StringEncoding error:nil];
-//        WKUserScript* script = [[WKUserScript alloc]initWithSource:jsStr injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];
-//        [wkWebView.configuration.userContentController addUserScript:script];
+        //inject rc_js_bridge.js
+        NSBundle* jsBridgeFrameWork = [NSBundle bundleForClass:self.class];
+        NSURL* rCJSBridgeBundleUrl = [jsBridgeFrameWork URLForResource:@"RCJSBridge" withExtension:@"bundle"];
+        NSBundle* rCJSBridgeBundle = [NSBundle bundleWithURL:rCJSBridgeBundleUrl];
+        NSString* pathForJavascriptStr = [rCJSBridgeBundle pathForResource:@"js_bridge_es5" ofType:@"js"];
+        NSString* jsStr = [NSString stringWithContentsOfFile:pathForJavascriptStr encoding:NSUTF8StringEncoding error:nil];
+        WKUserScript* script = [[WKUserScript alloc]initWithSource:jsStr injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];
+        [wkWebView.configuration.userContentController addUserScript:script];
         [wkWebView.configuration.userContentController addScriptMessageHandler:self name:@"RCJSBridgeHandler"];
         
         _commandDelegate = [[RCCommandDelegate alloc]initWithWebView:_wkWebView];
@@ -63,7 +63,6 @@
         NSLog(@"WARNING: className:%@ has been registered!",className);
     }
     plugin.commandDelegate = _commandDelegate;
-    [plugin pluginInitialize];
     [_pluginsObject setObject:plugin forKey:className];
 }
 
@@ -99,21 +98,21 @@
 -(void)exec:(RCInvokedUrlCommand*)command {
     
     if (command.className == nil || [command.className isKindOfClass:[NSNull class]]) {
-        RCPluginResult* result = [RCPluginResult resultWithStatus:CDVCommandStatus_CLASS_NOT_FOUND_EXCEPTION messageAsString:@"service name is null"];
+        RCPluginResult* result = [RCPluginResult resultWithString:@"class name is null" andStatus:CDVCommandStatus_CLASS_NOT_FOUND_EXCEPTION];
         [_commandDelegate sendPluginResult:result callbackId:command.callbackId];
         return;
     }
     
     if (command.methodName == nil || [command.methodName isKindOfClass:[NSNull class]]) {
-        RCPluginResult* result = [RCPluginResult resultWithStatus:CDVCommandStatus_INVALID_ACTION messageAsString:@"actioin name is null"];
+        RCPluginResult* result = [RCPluginResult resultWithString:@"method name is null" andStatus:CDVCommandStatus_INVALID_ACTION];
         [_commandDelegate sendPluginResult:result callbackId:command.callbackId];
         return;
     }
     RCPlugin* plugin = _pluginsObject[command.className];
     if (plugin == nil || !([plugin isKindOfClass:[RCPlugin class]])) {
-        NSString* err =[NSString stringWithFormat:@"ERROR: Plugin '%@' not found, or is not a RCPlugin. Check your plugin mapping in plugin.json. current plugins key: %@",command.className,_pluginsObject];
+        NSString* err =[NSString stringWithFormat:@"ERROR: Plugin '%@' not found. current plugins key: %@",command.className,_pluginsObject];
         NSLog(@"%@", err);
-        RCPluginResult* result = [RCPluginResult resultWithStatus:CDVCommandStatus_CLASS_NOT_FOUND_EXCEPTION messageAsString:err];
+        RCPluginResult* result = [RCPluginResult resultWithString:err andStatus:CDVCommandStatus_INVALID_ACTION];
         [_commandDelegate sendPluginResult:result callbackId:command.callbackId];
         return;
     }
@@ -123,7 +122,7 @@
     if (![plugin respondsToSelector:normalSelector]) {
         NSString* err = [NSString stringWithFormat:@"ERROR: Plugin '%@' could not response to method name '%@'",command.className,command.methodName];
         NSLog(@"%@",err);
-        RCPluginResult* result = [RCPluginResult resultWithStatus:CDVCommandStatus_INVALID_ACTION messageAsString:err];
+        RCPluginResult* result = [RCPluginResult resultWithString:err andStatus:CDVCommandStatus_INVALID_ACTION];
         [_commandDelegate sendPluginResult:result callbackId:command.callbackId];
         return;
     }

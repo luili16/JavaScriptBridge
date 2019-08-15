@@ -1,8 +1,6 @@
 "use strict";
 
-function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return right[Symbol.hasInstance](left); } else { return left instanceof right; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return !!right[Symbol.hasInstance](left); } else { return left instanceof right; } }
 
 function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -65,6 +63,32 @@ function () {
       var service = arguments.length > 2 ? arguments[2] : undefined;
       var action = arguments.length > 3 ? arguments[3] : undefined;
       var args = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : [];
+
+      if (success === null) {
+        console.log("JsBridge null success function");
+        return;
+      }
+
+      if (error === null) {
+        console.log("JsBridge null error function");
+        return;
+      }
+
+      if (service === null) {
+        console.log("JsBridge null service");
+        return;
+      }
+
+      if (action === null) {
+        console.log("JsBridge null action");
+        return;
+      }
+
+      if (args === null) {
+        console.log("JsBridge null args");
+        return;
+      }
+
       this._callbackIndex++;
 
       if (this._callbackIndex === Number.MAX_SAFE_INTEGER) {
@@ -78,34 +102,19 @@ function () {
       }
 
       args = this._massageArgsJsToNative(args);
-
-      if (success !== null) {
-        this._successMap.callbackId = success;
-        this._errorMap.callbackId = error;
-      } else {
-        // success回调是null，就说明不需要有返回值，那么callbackId就设为null
-        callbackId = null;
-      }
-
+      this._successMap.callbackId = success;
+      this._errorMap.callbackId = error;
       var command = [callbackId, service, action, args];
 
       if (this.platform === 'ios') {
-        console.log("in ios platform");
         window.webkit.messageHandlers.RCJSBridgeHandler.postMessage(command);
       } else {
-        console.log("in android platform");
         RCAndroidJSBridgeHandler.jsBridgeHandler(JSON.stringify(command));
       }
     }
   }, {
     key: "nativeCallback",
     value: function nativeCallback(callbackId, status, keepCallback, argumentsAsJson) {
-      console.log("callbackId:" + callbackId);
-      console.log("status:" + status);
-      console.log("keepCallback:" + keepCallback);
-      console.log("argumentsAsJson:" + argumentsAsJson.toString());
-      console.log("argumentsType: " + _typeof(argumentsAsJson));
-
       if (callbackId === null || callbackId === '') {
         return;
       }
@@ -164,12 +173,17 @@ function () {
   }, {
     key: "_massageMessageNativeToJs",
     value: function _massageMessageNativeToJs(message) {
-      if (message.CDVType !== 'ArrayBuffer') {
-        return message;
-      } // 将base64转为ArrayBuffer
+      if (message.CDVType === 'ArrayBuffer') {
+        // 将base64转为ArrayBuffer
+        return this._toArrayBuffer(message.data);
+      }
 
+      if (message.CDVType === 'Void') {
+        // native端没有返回值
+        return null;
+      }
 
-      return this._toArrayBuffer(message.data);
+      return message;
     } // base64转为ArrayBuffer
 
   }, {
