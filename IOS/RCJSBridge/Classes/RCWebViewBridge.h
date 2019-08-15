@@ -14,6 +14,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/*
+ *  js          ios
+ * Number      Number
+   Boolean     BOOL
+   String      NSString
+   Array       NSArray
+   Object      NSDictionary
+   ArrayBuffer NSData
+ *
+ */
 @interface RCWebViewBridge : NSObject {
 }
 -(RCWebViewBridge*)initWithWkWebView:(WKWebView*)wkWebView;

@@ -55,6 +55,7 @@ public class WebViewBridge {
         js = readJsCodeFromAsset(webView.getContext().getAssets());
         delegate = new CommandDelegate(webView);
         registerPlugin(actionPlugin);
+
     }
 
 
