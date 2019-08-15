@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RCJSBridge'
-  s.version          = '2.0.7'
+  s.version          = '0.0.1'
   s.summary          = 'A javascript bridge for DreamBridge'
 
 # This description is used to generate tags and improve search results.
