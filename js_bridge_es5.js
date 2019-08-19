@@ -48,8 +48,9 @@ function () {
     key: "checkPlatform",
     value: function checkPlatform() {
       var ua = window.navigator.userAgent;
+      var pattern = /RCAndroid/;
 
-      if (ua.startsWith('RCAndroid')) {
+      if (pattern.test(ua)) {
         return 'android';
       } else {
         return 'ios';

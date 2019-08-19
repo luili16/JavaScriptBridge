@@ -52,6 +52,9 @@ public class WebViewBridge {
         webView.addJavascriptInterface(this,"RCAndroidJSBridgeHandler");
         String userAgent = webView.getSettings().getUserAgentString();
         webView.getSettings().setUserAgentString("RCAndroid " + userAgent);
+        if (DEBUG) {
+            Log.d(TAG,"userAgent : " + webView.getSettings().getUserAgentString());
+        }
         js = readJsCodeFromAsset(webView.getContext().getAssets());
         delegate = new CommandDelegate(webView);
         registerPlugin(actionPlugin);

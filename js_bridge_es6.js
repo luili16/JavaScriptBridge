@@ -30,7 +30,8 @@ class RCJSBridgeClass {
 
     checkPlatform() {
         let ua = window.navigator.userAgent;
-        if (ua.startsWith('RCAndroid')) {
+        let pattern = /RCAndroid/;
+        if (pattern.test(ua)) {
             return 'android';
         } else {
             return 'ios';
