@@ -11,6 +11,8 @@
 #import <RCJSBridge/RCJSBridge-umbrella.h>
 #import "RCTestPlugin.h"
 #import "RCCallbackPlugin.h"
+#import "RCEchoPlugin0.h"
+#import "RCEchoPlugin1.h"
 
 @interface ViewController () {
     @private
@@ -33,6 +35,8 @@
     _webViewEngine = [[RCWebViewBridge alloc]initWithWkWebView:_wkWebView];
     [_webViewEngine registerPlugin:[[RCTestPlugin alloc]init] withClassName:@"TestPlugin"];
     [_webViewEngine registerPlugin:[[RCCallbackPlugin alloc]init] withClassName:@"CallbackPlugin"];
+    [_webViewEngine registerPlugin:[[RCEchoPlugin0 alloc]init] withClassName:@"EchoPlugin0"];
+    [_webViewEngine registerPlugin:[[RCEchoPlugin1 alloc]init] withClassName:@"EchoPlugin1"];
     [self.view addSubview:_wkWebView];
     [_wkWebView setUIDelegate:self];
     NSString* path = [[NSBundle mainBundle] pathForResource:@"index1.html" ofType:nil inDirectory:@"www/main"];

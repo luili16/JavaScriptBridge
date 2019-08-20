@@ -77,8 +77,10 @@ class RCJSBridgeClass {
             args = [];
         }
         args = this._massageArgsJsToNative(args);
-        this._successMap.callbackId = success;
-        this._errorMap.callbackId = error;
+        this._successMap[callbackId] = success;
+        this._errorMap[callbackId] = error;
+        this._logMap(this._successMap);
+        this._logMap(this._errorMap);
         let command = [callbackId, service, action, args];
         
         if (this.platform === 'ios') {
@@ -94,8 +96,8 @@ class RCJSBridgeClass {
             return;
         }
 
-        let success = this._successMap.callbackId;
-        let error = this._errorMap.callbackId;
+        let success = this._successMap[callbackId];
+        let error = this._errorMap[callbackId];
         if (success === null || success === 'undefined') {
             return;
         }
@@ -104,8 +106,10 @@ class RCJSBridgeClass {
         // 这里会有一个潜在的bug，当native端结束向js端发送消息，并且没有
         // 将keepCallback置为false的话，会导致js端发生内存泄漏。
         if (!Boolean(keepCallback)) {
-            delete this._successMap.callbackId;
-            delete this._errorMap.callbackId;
+            delete this._successMap[callbackId];
+            delete this._errorMap[callbackId];
+            this._logMap(this._successMap);
+            this._logMap(this._errorMap);
         }
         let response = {};
         response.status = status;
@@ -196,6 +200,25 @@ class RCJSBridgeClass {
 
     _typeName(val) {
         return Object.prototype.toString.call(val).slice(8, -1);
+    }
+
+    _log(msg) {
+        if (this._isDebug) {
+            console.log(msg);
+        }
+    }
+
+    _logMap(myMap) {
+        if (this._isDebug) {
+            if (Object.keys(myMap).length == 0) {
+                console.log("myMap size == 0!!");
+                return;
+            }
+            console.log("print key and value");
+            Object.keys(myMap).forEach((key) => {
+                console.log(key + " ->" + myMap[key]);
+            });
+        }
     }
 }
 window.RCJSBridge = new RCJSBridgeClass();

@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         CallbackPlugin callbackPlugin = new CallbackPlugin();
         bridge.registerPlugin(plugin);
         bridge.registerPlugin(callbackPlugin);
+        bridge.registerPlugin(new EchoPlugin0());
+        bridge.registerPlugin(new EchoPlugin1());
         bridge.registerAction("customAction1", new ActionCallback() {
             @Override
             public void onExec(InvokeUrlCommand command, CommandDelegate delegate) throws JSONException {

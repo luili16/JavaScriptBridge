@@ -103,8 +103,13 @@ function () {
       }
 
       args = this._massageArgsJsToNative(args);
-      this._successMap.callbackId = success;
-      this._errorMap.callbackId = error;
+      this._successMap[callbackId] = success;
+      this._errorMap[callbackId] = error;
+
+      this._logMap(this._successMap);
+
+      this._logMap(this._errorMap);
+
       var command = [callbackId, service, action, args];
 
       if (this.platform === 'ios') {
@@ -120,8 +125,8 @@ function () {
         return;
       }
 
-      var success = this._successMap.callbackId;
-      var error = this._errorMap.callbackId;
+      var success = this._successMap[callbackId];
+      var error = this._errorMap[callbackId];
 
       if (success === null || success === 'undefined') {
         return;
@@ -132,8 +137,12 @@ function () {
 
 
       if (!Boolean(keepCallback)) {
-        delete this._successMap.callbackId;
-        delete this._errorMap.callbackId;
+        delete this._successMap[callbackId];
+        delete this._errorMap[callbackId];
+
+        this._logMap(this._successMap);
+
+        this._logMap(this._errorMap);
       }
 
       var response = {};
@@ -238,6 +247,28 @@ function () {
     key: "_typeName",
     value: function _typeName(val) {
       return Object.prototype.toString.call(val).slice(8, -1);
+    }
+  }, {
+    key: "_log",
+    value: function _log(msg) {
+      if (this._isDebug) {
+        console.log(msg);
+      }
+    }
+  }, {
+    key: "_logMap",
+    value: function _logMap(myMap) {
+      if (this._isDebug) {
+        if (Object.keys(myMap).length == 0) {
+          console.log("myMap size == 0!!");
+          return;
+        }
+
+        console.log("print key and value");
+        Object.keys(myMap).forEach(function (key) {
+          console.log(key + " ->" + myMap[key]);
+        });
+      }
     }
   }]);
 

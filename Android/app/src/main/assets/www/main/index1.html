@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
-		<!--<script type="text/javascript" src="rc_js_bridge_es5.js"></script>-->
+		<!--<script type="text/javascript" src="js_bridge_es5.js"></script>-->
 		<script type="text/javascript" src="md5.js"></script>
 		<script type="application/javascript">
 
@@ -203,6 +203,37 @@
 				},"CallbackPlugin","keepCallbackFromString",["abc"]);
 			}
 
+			function concurrentTest() {
+				console.log("call concurrentTest");
+				var _EchoMethods = ["method0","method1","method2","method3","method4"];
+				var _EchoPlugins = ["EchoPlugin0","EchoPlugin1"];
+				var _taskMap = {};
+				var _showTask = document.getElementById('task_count_id');
+				// 循环将任务发送出去
+				var _taskCount = 50;
+				for (var _i = 0; _i < _taskCount; _i++) {
+					var _echoPlugin = _EchoPlugins[getRandomInt(2)];
+					var _echoMethod = _EchoMethods[getRandomInt(5)];
+					_taskMap[_i.toString()] = _i;
+					window.RCJSBridge.exec(
+						function success(response){
+							delete _taskMap[response.data.toString()];
+							console.log("剩余任务数: " + Object.keys(_taskMap).length);
+							_showTask.innerText = "剩余任务数: " + Object.keys(_taskMap).length;
+						},
+						function error(response){
+							console.log("出现错误!!!!!!");
+						},
+						_echoPlugin,
+						_echoMethod,
+						[_i]);
+				}
+			}
+
+			function getRandomInt(max) {
+				return Math.floor(Math.random() * Math.floor(max));
+			}
+
 
 
 		</script>
@@ -225,5 +256,7 @@
 		<button onclick="callbackArrayBufferFromNative()">callbackArrayBufferFromNative1</button></br>
 		<button onclick="callbackVoidFromNative()">callbackVoidFromNative1</button></br>
 		<button onclick="keepCallbackFromString()">keepCallbackFromString1</button></br>
+		<button onclick="concurrentTest()">concurrentTest1</button></br>
+		<div id="task_count_id"></div>
 	</body>
 </html>

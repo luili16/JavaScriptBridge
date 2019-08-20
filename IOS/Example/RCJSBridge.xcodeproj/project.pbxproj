@@ -12,6 +12,8 @@
 		1B37A5B7222CD5AC004ACA18 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B37A5B5222CD5AC004ACA18 /* test.jpg */; };
 		1B4163372302BA1C009FCB34 /* RCTestPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4163362302BA1C009FCB34 /* RCTestPlugin.m */; };
 		1B41633A2302BA2C009FCB34 /* RCCallbackPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4163392302BA2C009FCB34 /* RCCallbackPlugin.m */; };
+		1BF180D8230B8CE500554851 /* RCEchoPlugin0.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF180D7230B8CE500554851 /* RCEchoPlugin0.m */; };
+		1BF180DB230B8CF400554851 /* RCEchoPlugin1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF180DA230B8CF400554851 /* RCEchoPlugin1.m */; };
 		5E205E2BD50CD6D90BEB0B0D /* Pods_RCJSBridge_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A7756243134BC976C66408 /* Pods_RCJSBridge_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -50,6 +52,10 @@
 		1B4163362302BA1C009FCB34 /* RCTestPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTestPlugin.m; sourceTree = "<group>"; };
 		1B4163382302BA2C009FCB34 /* RCCallbackPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCCallbackPlugin.h; sourceTree = "<group>"; };
 		1B4163392302BA2C009FCB34 /* RCCallbackPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCCallbackPlugin.m; sourceTree = "<group>"; };
+		1BF180D6230B8CE500554851 /* RCEchoPlugin0.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCEchoPlugin0.h; sourceTree = "<group>"; };
+		1BF180D7230B8CE500554851 /* RCEchoPlugin0.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCEchoPlugin0.m; sourceTree = "<group>"; };
+		1BF180D9230B8CF400554851 /* RCEchoPlugin1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCEchoPlugin1.h; sourceTree = "<group>"; };
+		1BF180DA230B8CF400554851 /* RCEchoPlugin1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCEchoPlugin1.m; sourceTree = "<group>"; };
 		1E8602D912CAA848ED5E15BD /* Pods-RCJSBridge_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCJSBridge_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RCJSBridge_Example/Pods-RCJSBridge_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1F29250DF36B32155D1B77AC /* Pods_RCJSBridge_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCJSBridge_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30051B92EE02E65C44207B64 /* Pods-RCJSBridge_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCJSBridge_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RCJSBridge_Tests/Pods-RCJSBridge_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +162,10 @@
 				1B4163362302BA1C009FCB34 /* RCTestPlugin.m */,
 				1B4163382302BA2C009FCB34 /* RCCallbackPlugin.h */,
 				1B4163392302BA2C009FCB34 /* RCCallbackPlugin.m */,
+				1BF180D6230B8CE500554851 /* RCEchoPlugin0.h */,
+				1BF180D7230B8CE500554851 /* RCEchoPlugin0.m */,
+				1BF180D9230B8CF400554851 /* RCEchoPlugin1.h */,
+				1BF180DA230B8CF400554851 /* RCEchoPlugin1.m */,
 			);
 			name = "Example for RCJSBridge";
 			path = RCJSBridge;
@@ -378,6 +388,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* RCAppDelegate.m in Sources */,
+				1BF180DB230B8CF400554851 /* RCEchoPlugin1.m in Sources */,
+				1BF180D8230B8CE500554851 /* RCEchoPlugin0.m in Sources */,
 				1B4163372302BA1C009FCB34 /* RCTestPlugin.m in Sources */,
 				1B37A5B3222CD5A1004ACA18 /* ViewController.m in Sources */,
 				1B41633A2302BA2C009FCB34 /* RCCallbackPlugin.m in Sources */,
