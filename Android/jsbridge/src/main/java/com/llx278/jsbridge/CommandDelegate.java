@@ -1,8 +1,9 @@
 package com.llx278.jsbridge;
 
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.webkit.WebView;
+
+import androidx.annotation.NonNull;
 
 import java.util.Locale;
 

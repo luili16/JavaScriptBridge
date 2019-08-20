@@ -2,11 +2,12 @@ package com.llx278.jsbridge;
 
 import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
+
+import androidx.annotation.NonNull;
 
 import com.llx278.jsbridge.plugin.ActionCallback;
 import com.llx278.jsbridge.plugin.ActionPlugin;

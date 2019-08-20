@@ -1,7 +1,8 @@
 package com.llx278.jsbridge.plugin;
 
-import android.support.annotation.NonNull;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.llx278.jsbridge.WebViewBridge;
 
@@ -9,7 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class InvokeUrlCommand {
-    private @NonNull final String callbackId;
+    private @NonNull
+    final String callbackId;
     private @NonNull final String className;
     private @NonNull final String methodName;
     private @NonNull final JSONArray arguments;

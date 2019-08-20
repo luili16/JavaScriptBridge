@@ -1,6 +1,7 @@
 package com.llx278.jsbridge;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import java.lang.reflect.Method;
 import java.util.Map;
