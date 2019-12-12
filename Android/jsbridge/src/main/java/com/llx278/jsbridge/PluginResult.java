@@ -45,28 +45,56 @@ public class PluginResult {
         return new PluginResult(status,messageFromVoid());
     }
 
+    public static PluginResult resultWithOkVoid() {
+        return resultWithVoid(CommandStatus.CDVCommandStatus_OK);
+    }
+
     public static PluginResult resultWithString(@NonNull CommandStatus status, @NonNull String message) {
         return new PluginResult(status,message);
+    }
+
+    public static PluginResult resultWithOkString(@NonNull String message) {
+        return resultWithString(CommandStatus.CDVCommandStatus_OK,message);
     }
 
     public static PluginResult resultWithNumber(@NonNull CommandStatus status,@NonNull Number message) {
         return new PluginResult(status,message);
     }
 
+    public static PluginResult resultWithOkNumber(@NonNull Number message) {
+        return resultWithNumber(CommandStatus.CDVCommandStatus_OK,message);
+    }
+
     public static PluginResult resultWithBoolean(@NonNull CommandStatus status,@NonNull Boolean message) {
         return new PluginResult(status,message);
+    }
+
+    public static PluginResult resultWithOkBoolean(@NonNull Boolean message) {
+        return resultWithBoolean(CommandStatus.CDVCommandStatus_OK,message);
     }
 
     public static PluginResult resultWithJsonArray(@NonNull CommandStatus status, @NonNull JSONArray message) {
         return new PluginResult(status,message);
     }
 
+    public static PluginResult resultWithOkJsonArray(@NonNull JSONArray message) {
+        return resultWithJsonArray(CommandStatus.CDVCommandStatus_OK,message);
+    }
+
     public static PluginResult resultWithJsonObject(@NonNull CommandStatus status, @NonNull JSONObject message) {
         return new PluginResult(status,message);
     }
 
+    public static PluginResult resultWithOkJsonObject(@NonNull JSONObject message) {
+        return resultWithJsonObject(CommandStatus.CDVCommandStatus_OK,message);
+    }
+
     public static PluginResult resultWithArrayBuffer(@NonNull CommandStatus status, @NonNull byte[] buf) {
         return new PluginResult(status,messageFromArrayBuffer(buf));
+    }
+
+    public static PluginResult resultWithOkArrayBuffer(@NonNull byte[] buf) {
+        return resultWithArrayBuffer(CommandStatus.CDVCommandStatus_OK,buf);
     }
 
     public @NonNull CommandStatus getStatus() {

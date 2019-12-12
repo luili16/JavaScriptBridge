@@ -20,8 +20,7 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  *
@@ -40,7 +39,9 @@ import java.util.concurrent.Executors;
 public class WebViewBridge {
     public static final boolean DEBUG = BuildConfig.DEBUG;
     public static final String TAG = "WebViewBridge";
-    private final ExecutorService exec = Executors.newFixedThreadPool(2);
+    private final ExecutorService exec = new ThreadPoolExecutor(2, 10,
+            1L, TimeUnit.SECONDS,
+            new LinkedBlockingQueue<Runnable>());
     private final CommandDelegate delegate;
     private final Map<String,PluginHolder> plugins = new HashMap<>();
     private final ActionPlugin actionPlugin = new ActionPlugin();

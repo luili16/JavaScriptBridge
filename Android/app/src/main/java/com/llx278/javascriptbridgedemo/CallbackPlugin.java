@@ -109,6 +109,8 @@ public class CallbackPlugin extends BasePlugin {
         }
         PluginResult result = PluginResult.resultWithString(CommandStatus.CDVCommandStatus_OK,"done");
         getDelegate().sendPluginResult(result,command.getCallbackId(),false);
+        result = PluginResult.resultWithString(CommandStatus.CDVCommandStatus_OK,"over");
+        getDelegate().sendPluginResult(result,command.getCallbackId(),false);
     }
 
     @Override
