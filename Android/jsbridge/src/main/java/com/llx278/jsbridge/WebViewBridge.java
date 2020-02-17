@@ -2,6 +2,8 @@ package com.llx278.jsbridge;
 
 import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
@@ -47,6 +49,7 @@ public class WebViewBridge {
     private final ActionPlugin actionPlugin = new ActionPlugin();
     private final String js;
     private final WebView webView;
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
     @SuppressLint("SetJavaScriptEnabled")
     public WebViewBridge(@NonNull WebView webView) {
         this.webView = webView;
@@ -58,7 +61,7 @@ public class WebViewBridge {
             Log.d(TAG,"userAgent : " + webView.getSettings().getUserAgentString());
         }
         js = readJsCodeFromAsset(webView.getContext().getAssets());
-        delegate = new CommandDelegate(webView);
+        delegate = new CommandDelegate(webView,mainHandler);
         registerPlugin(actionPlugin);
 
     }
@@ -84,14 +87,12 @@ public class WebViewBridge {
 
     @JavascriptInterface
     public void globalInit() {
-        webView.post(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        webView.evaluateJavascript(WebViewBridge.this.js,null);
-                    }
-                }
-        );
+        mainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                webView.evaluateJavascript(WebViewBridge.this.js,null);
+            }
+        });
     }
 
     @JavascriptInterface

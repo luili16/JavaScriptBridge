@@ -1,5 +1,6 @@
 package com.llx278.jsbridge;
 
+import android.os.Handler;
 import android.util.Log;
 import android.webkit.WebView;
 
@@ -9,8 +10,10 @@ import java.util.Locale;
 
 public class CommandDelegate {
     private WebView webView;
-    CommandDelegate(@NonNull WebView webView) {
+    private Handler mainHandler;
+    CommandDelegate(@NonNull WebView webView, Handler mainHandler) {
         this.webView = webView;
+        this.mainHandler = mainHandler;
     }
 
     public void sendPluginResult(@NonNull PluginResult result, @NonNull String callbackId) {
@@ -34,7 +37,7 @@ public class CommandDelegate {
             Log.d("main","jsStr : " + js);
         }
         if (webView != null) {
-            webView.post(new Runnable() {
+            mainHandler.post(new Runnable() {
                 @Override
                 public void run() {
                     if (webView != null) {
