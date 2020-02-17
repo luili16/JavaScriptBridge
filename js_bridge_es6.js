@@ -222,3 +222,6 @@ class RCJSBridgeClass {
     }
 }
 window.RCJSBridge = new RCJSBridgeClass();
+if (window.RCJSBridgeInitFinishCallback !== null && window.RCJSBridgeInitFinishCallback !== 'undefined') {
+	window.RCJSBridgeInitFinishCallback()
+}

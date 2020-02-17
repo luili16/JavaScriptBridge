@@ -9,6 +9,9 @@
 		<script type="text/javascript" src="md5.js"></script>
 		<script type="application/javascript">
 
+			window.RCJSBridgeInitFinishCallback = function() {
+				alert("初始化完成!!!");
+			}
 			window.RCAndroidJSBridgeHandler.globalInit()
 
 			function passNumberToNative() {
