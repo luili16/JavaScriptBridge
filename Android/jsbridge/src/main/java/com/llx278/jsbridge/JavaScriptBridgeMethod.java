@@ -12,4 +12,6 @@ public @interface JavaScriptBridgeMethod {
      * js端对应的方法名
      */
     String methodName() default "";
+
+    ThreadMode mode() default ThreadMode.POOL;
 }

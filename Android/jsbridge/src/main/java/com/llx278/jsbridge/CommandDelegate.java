@@ -1,6 +1,7 @@
 package com.llx278.jsbridge;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.webkit.WebView;
 
@@ -20,6 +21,11 @@ public class CommandDelegate {
         sendPluginResult(result,callbackId,false);
     }
 
+    private boolean isMainThread() {
+        Looper looper = Looper.getMainLooper();
+        return looper == Looper.myLooper();
+    }
+
     /**
      *
      * @param result js调用的结果
@@ -37,14 +43,18 @@ public class CommandDelegate {
             Log.d("main","jsStr : " + js);
         }
         if (webView != null) {
-            mainHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    if (webView != null) {
-                        webView.evaluateJavascript(js, null);
+            if (isMainThread()) {
+                webView.evaluateJavascript(js, null);
+            } else {
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (webView != null) {
+                            webView.evaluateJavascript(js, null);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
     }
 

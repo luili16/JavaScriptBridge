@@ -148,22 +148,30 @@ public class WebViewBridge {
         }
 
         final Method method = h.jsMethods.get(methodName);
-
-        exec.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (method != null) {
-                        method.invoke(h.plugin,command);
-                    }
-                } catch (Exception e) {
-                    Log.e(TAG,"exec native javascript method throw an exception!",e);
-                    PluginResult result = PluginResult.resultWithString(CommandStatus.CDVCommandStatus_NATIVE_METHOD_EXCEPTION,
-                            "'exec native javascript method throw an exception!'");
-                    delegate.sendPluginResult(result,command.getCallbackId());
+        final ThreadMode mode = h.modes.get(methodName);
+        if (mode == ThreadMode.MAIN) {
+            execMethod(method,h,command);
+        } else if (mode == ThreadMode.POOL) {
+            exec.execute(new Runnable() {
+                @Override
+                public void run() {
+                    execMethod(method,h,command);
                 }
+            });
+        }
+    }
+
+    private void execMethod(Method method,PluginHolder h,InvokeUrlCommand command) {
+        try {
+            if (method != null) {
+                method.invoke(h.plugin,command);
             }
-        });
+        } catch (Exception e) {
+            Log.e(TAG,"exec native javascript method throw an exception!",e);
+            PluginResult result = PluginResult.resultWithString(CommandStatus.CDVCommandStatus_NATIVE_METHOD_EXCEPTION,
+                    "'exec native javascript method throw an exception!'");
+            delegate.sendPluginResult(result,command.getCallbackId());
+        }
     }
 
     public synchronized void registerAction(String action, ActionCallback callback) {
@@ -188,7 +196,8 @@ public class WebViewBridge {
 
         Map<String,Method> methodMap = new HashMap<>();
         Method[] methods = pluginClass.getMethods();
-        PluginHolder holder = new PluginHolder(plugin,methodMap);
+        Map<String,ThreadMode> modeMap = new HashMap<>();
+        PluginHolder holder = new PluginHolder(plugin,methodMap,modeMap);
         for (Method method : methods) {
             JavaScriptBridgeMethod anno = method.getAnnotation(JavaScriptBridgeMethod.class);
             if (anno != null) {
@@ -200,6 +209,7 @@ public class WebViewBridge {
                 }
 
                 methodMap.put(name,method);
+                modeMap.put(name,anno.mode());
             }
         }
         plugins.put(clsName,holder);

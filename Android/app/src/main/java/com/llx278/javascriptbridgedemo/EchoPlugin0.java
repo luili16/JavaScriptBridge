@@ -5,6 +5,7 @@ import com.llx278.jsbridge.CommandStatus;
 import com.llx278.jsbridge.JavaScriptBridgeClass;
 import com.llx278.jsbridge.JavaScriptBridgeMethod;
 import com.llx278.jsbridge.PluginResult;
+import com.llx278.jsbridge.ThreadMode;
 import com.llx278.jsbridge.plugin.InvokeUrlCommand;
 
 import java.util.Random;
@@ -16,7 +17,7 @@ public class EchoPlugin0 extends BasePlugin {
     public void dispose() {
     }
 
-    @JavaScriptBridgeMethod
+    @JavaScriptBridgeMethod(mode = ThreadMode.MAIN)
     public void method0(InvokeUrlCommand command) throws Exception {
         int index = command.getArguments().getInt(0);
         int nap = random.nextInt(2000);
