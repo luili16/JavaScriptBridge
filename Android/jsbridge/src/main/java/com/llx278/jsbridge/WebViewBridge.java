@@ -50,6 +50,7 @@ public class WebViewBridge {
     private final String js;
     private final WebView webView;
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private boolean isGlobalInit = false;
     @SuppressLint("SetJavaScriptEnabled")
     public WebViewBridge(@NonNull WebView webView) {
         this.webView = webView;
@@ -87,12 +88,16 @@ public class WebViewBridge {
 
     @JavascriptInterface
     public void globalInit() {
-        mainHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                webView.evaluateJavascript(WebViewBridge.this.js,null);
-            }
-        });
+        // 只初始化一次
+        if (!isGlobalInit) {
+            isGlobalInit = true;
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    webView.evaluateJavascript(WebViewBridge.this.js,null);
+                }
+            });
+        }
     }
 
     @JavascriptInterface
@@ -150,7 +155,12 @@ public class WebViewBridge {
         final Method method = h.jsMethods.get(methodName);
         final ThreadMode mode = h.modes.get(methodName);
         if (mode == ThreadMode.MAIN) {
-            execMethod(method,h,command);
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    execMethod(method,h,command);
+                }
+            });
         } else if (mode == ThreadMode.POOL) {
             exec.execute(new Runnable() {
                 @Override
