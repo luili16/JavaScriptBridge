@@ -7,13 +7,13 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
-import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 
 import com.llx278.jsbridge.plugin.ActionCallback;
 import com.llx278.jsbridge.plugin.ActionPlugin;
 import com.llx278.jsbridge.plugin.InvokeUrlCommand;
+import com.tencent.smtt.sdk.WebView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

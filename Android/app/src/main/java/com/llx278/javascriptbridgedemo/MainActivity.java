@@ -5,9 +5,6 @@ import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +17,9 @@ import com.llx278.jsbridge.PluginResult;
 import com.llx278.jsbridge.WebViewBridge;
 import com.llx278.jsbridge.plugin.ActionCallback;
 import com.llx278.jsbridge.plugin.InvokeUrlCommand;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -3,9 +3,10 @@ package com.llx278.jsbridge;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
+
+import com.tencent.smtt.sdk.WebView;
 
 import java.util.Locale;
 
