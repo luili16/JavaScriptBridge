@@ -48,12 +48,15 @@ public class WebViewBridge {
     private final Map<String,PluginHolder> plugins = new HashMap<>();
     private final ActionPlugin actionPlugin = new ActionPlugin();
     private final String js;
-    private final WebView webView;
+    private WebView x5WebView;
+    private android.webkit.WebView systemWebView;
+    private IJsExecutor jsExecutor;
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private boolean isGlobalInit = false;
     @SuppressLint("SetJavaScriptEnabled")
     public WebViewBridge(@NonNull WebView webView) {
-        this.webView = webView;
+        this.x5WebView = webView;
+        js = readJsCodeFromAsset(webView.getContext().getAssets());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.addJavascriptInterface(this,"RCAndroidJSBridgeHandler");
         String userAgent = webView.getSettings().getUserAgentString();
@@ -61,10 +64,25 @@ public class WebViewBridge {
         if (DEBUG) {
             Log.d(TAG,"userAgent : " + webView.getSettings().getUserAgentString());
         }
-        js = readJsCodeFromAsset(webView.getContext().getAssets());
-        delegate = new CommandDelegate(webView,mainHandler);
+        jsExecutor = new JSExecutor(webView);
+        delegate = new CommandDelegate(jsExecutor,mainHandler);
         registerPlugin(actionPlugin);
+    }
 
+    @SuppressLint("SetJavaScriptEnabled")
+    public WebViewBridge(@NonNull android.webkit.WebView webView) {
+        this.systemWebView = webView;
+        js = readJsCodeFromAsset(webView.getContext().getAssets());
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.addJavascriptInterface(this,"RCAndroidJSBridgeHandler");
+        String userAgent = webView.getSettings().getUserAgentString();
+        webView.getSettings().setUserAgentString("RCAndroid " + userAgent);
+        if (DEBUG) {
+            Log.d(TAG,"userAgent : " + webView.getSettings().getUserAgentString());
+        }
+        jsExecutor = new JSExecutor(webView);
+        delegate = new CommandDelegate(jsExecutor,mainHandler);
+        registerPlugin(actionPlugin);
     }
 
 
@@ -94,7 +112,7 @@ public class WebViewBridge {
             mainHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    webView.evaluateJavascript(WebViewBridge.this.js,null);
+                    jsExecutor.evaluateJavascript(WebViewBridge.this.js,null);
                 }
             });
         }

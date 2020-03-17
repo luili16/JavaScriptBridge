@@ -1,6 +1,5 @@
 package com.llx278.javascriptbridgedemo;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -8,8 +7,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.llx278.jsbridge.CommandDelegate;
 import com.llx278.jsbridge.CommandStatus;
@@ -27,13 +24,45 @@ import org.json.JSONException;
 public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
+    private android.webkit.WebView systemWebView;
     private WebViewBridge bridge;
+    private WebViewBridge systemBridge;
 
-    @SuppressLint("SetJavaScriptEnabled")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+    private void initSystemWebView() {
+        systemWebView = findViewById(R.id.systemwebview);
+        systemWebView.getSettings().setJavaScriptEnabled(true);
+        systemWebView.setWebChromeClient(new android.webkit.WebChromeClient());
+        systemWebView.setWebViewClient(new android.webkit.WebViewClient());
+        WebView.setWebContentsDebuggingEnabled(true);
+        systemBridge = new WebViewBridge(systemWebView);
+        TestPlugin plugin = new TestPlugin();
+        CallbackPlugin callbackPlugin = new CallbackPlugin();
+        systemBridge.registerPlugin(plugin);
+        systemBridge.registerPlugin(callbackPlugin);
+        systemBridge.registerPlugin(new EchoPlugin0());
+        systemBridge.registerPlugin(new EchoPlugin1());
+        systemBridge.registerAction("customAction1", new ActionCallback() {
+            @Override
+            public void onExec(InvokeUrlCommand command, CommandDelegate delegate) throws JSONException {
+                Log.d("main","call customAction1");
+                String className = command.getClassName();
+                String methodName = command.getMethodName();
+                String callbackId = command.getCallbackId();
+                JSONArray args = command.getArguments();
+                Log.d("main","className:" + className);
+                Log.d("main","methodName:" + methodName);
+                Log.d("main","callbackId:" + callbackId);
+                Log.d("main","args size:" + args.length());
+                int arg0 = args.getInt(0);
+                String arg1 = args.getString(1);
+                PluginResult result = PluginResult.resultWithString(CommandStatus.CDVCommandStatus_OK,"" + arg0 + "" + arg1);
+                delegate.sendPluginResult(result,command.getCallbackId());
+            }
+        });
+    }
+
+    private void initX5WebView() {
         webView = findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebChromeClient(new WebChromeClient());
@@ -64,12 +93,17 @@ public class MainActivity extends AppCompatActivity {
                 delegate.sendPluginResult(result,command.getCallbackId());
             }
         });
-        if (ContextCompat.checkSelfPermission(this,Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED) {
-           load();
-        } else {
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET},1);
-        }
+    }
 
+    @SuppressLint("SetJavaScriptEnabled")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        initSystemWebView();
+        initX5WebView();
+        load();
     }
 
     @Override
@@ -86,9 +120,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         bridge.dispose();
+        systemBridge.dispose();
     }
 
     public void load() {
         webView.loadUrl("file:///android_asset/www/main/index1.html");
+        systemWebView.loadUrl("file:///android_asset/www/main/index1.html");
     }
 }

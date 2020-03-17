@@ -6,15 +6,13 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.tencent.smtt.sdk.WebView;
-
 import java.util.Locale;
 
 public class CommandDelegate {
-    private WebView webView;
+    private IJsExecutor jsExecutor;
     private Handler mainHandler;
-    CommandDelegate(@NonNull WebView webView, Handler mainHandler) {
-        this.webView = webView;
+    CommandDelegate(@NonNull IJsExecutor jsExecutor, Handler mainHandler) {
+        this.jsExecutor = jsExecutor;
         this.mainHandler = mainHandler;
     }
 
@@ -43,15 +41,15 @@ public class CommandDelegate {
         if (WebViewBridge.DEBUG) {
             Log.d("main","jsStr : " + js);
         }
-        if (webView != null) {
+        if (jsExecutor != null) {
             if (isMainThread()) {
-                webView.evaluateJavascript(js, null);
+                jsExecutor.evaluateJavascript(js, null);
             } else {
                 mainHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if (webView != null) {
-                            webView.evaluateJavascript(js, null);
+                        if (jsExecutor != null) {
+                            jsExecutor.evaluateJavascript(js, null);
                         }
                     }
                 });
@@ -60,6 +58,6 @@ public class CommandDelegate {
     }
 
     void releaseWebView() {
-        webView = null;
+        jsExecutor = null;
     }
 }
