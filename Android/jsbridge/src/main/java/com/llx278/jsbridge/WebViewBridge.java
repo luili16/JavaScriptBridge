@@ -52,7 +52,6 @@ public class WebViewBridge {
     private android.webkit.WebView systemWebView;
     private IJsExecutor jsExecutor;
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
-    private boolean isGlobalInit = false;
     @SuppressLint("SetJavaScriptEnabled")
     public WebViewBridge(@NonNull WebView webView) {
         this.x5WebView = webView;
@@ -107,15 +106,12 @@ public class WebViewBridge {
     @JavascriptInterface
     public void globalInit() {
         // 只初始化一次
-        if (!isGlobalInit) {
-            isGlobalInit = true;
-            mainHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    jsExecutor.evaluateJavascript(WebViewBridge.this.js,null);
-                }
-            });
-        }
+        mainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                jsExecutor.evaluateJavascript(WebViewBridge.this.js,null);
+            }
+        });
     }
 
     @JavascriptInterface
